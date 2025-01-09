@@ -1,0 +1,17 @@
+{
+  "M1005": {
+    "status": "Y",
+    "notes": "See testing programme IDxxx Re HPAs"
+  },
+  "M1006": {
+    "status": "Y",
+    "notes": "See testing programme IDyyy Re DCOs"
+  },
+  "M1008": {
+    "status": "NA",
+    "notes": "Hardware write blocker used as standard instead."
+  }
+
+}
+
+

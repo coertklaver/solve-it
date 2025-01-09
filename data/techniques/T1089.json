@@ -1,0 +1,12 @@
+{
+    "id": "T1089",
+    "name": "Source code review",
+    "description": "",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": [],
+    "CASE_output_classes" : [],
+    "references": ["todo"]
+}

@@ -1,0 +1,12 @@
+{
+    "id": "T1081",
+    "name": "Image content analysis",
+    "description": "",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": ["T1100"],
+    "examples": [],
+    "weaknesses": [],
+    "CASE_output_classes" : [],
+    "references": ["todo"]
+}

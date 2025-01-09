@@ -1,0 +1,12 @@
+{
+    "id": "T1057",
+    "name": "Steganography detection",
+    "description": "",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": [],
+    "CASE_output_classes" : [],
+    "references": ["todo"]
+}

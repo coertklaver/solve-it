@@ -1,0 +1,12 @@
+{
+    "id": "T1013",
+    "name": "Software write blockers",
+    "description": "",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": [],
+    "CASE_output_classes" : [],
+    "references": ["todo"]
+}

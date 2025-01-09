@@ -1,0 +1,12 @@
+{
+    "id": "T1044",
+    "name": "Mobile backup decoding",
+    "description": "",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": ["W1046", "W1047", "W1048", "W1049", "W1050", "W1051"],
+    "CASE_output_classes" : [],
+     "references": ["todo"]
+}

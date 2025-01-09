@@ -1,0 +1,12 @@
+{
+    "id": "T1043",
+    "name": "Forensic image format decoding",
+    "description": "The decoding of a forensic format such as EWF such that the raw sectors can be accessed by a forensic tool (typically performed on-the-fly internally in a tool.)",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": ["W1121", "W1122", "W1123"],
+    "CASE_output_classes" : [],
+    "references": ["todo"]
+}

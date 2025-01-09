@@ -1,0 +1,13 @@
+{
+    "id": "T1069",
+    "name": "Browser examination",
+    "description": "Recovery of information left from web browsing activity (derived from Oh et al (2011))",
+    "synonyms": [],
+    "details": "This may involve: history, cached items, bookmarks, cookies, saved passwords, form data.",
+    "subtechniques":[],
+    "examples": [],
+    "weaknesses": ["W1108", "W1109", "W1110", "W1111", "W1112", "W1113"],
+    "CASE_output_classes" : ["observable:URLHistory", "observable:CookieHistory", "observable:BrowserBookmark", "observable:BrowserCookie", "observable:URLVisit", "observable:URLHistoryEntry"],
+    "references": ["Digital Detective Knowledgebase https://kb.digital-detective.net/display/BF",
+                    "Oh, J., Lee, S. and Lee, S., 2011. Advanced evidence collection and analysis of web browser activity. Digital investigation, 8, pp.S62-S70."]
+}

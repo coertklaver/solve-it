@@ -1,0 +1,12 @@
+{
+    "id": "T1095",
+    "name": "Instrumentation",
+    "description": "",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": [],
+    "CASE_output_classes" : [],
+    "references": ["todo"]
+}

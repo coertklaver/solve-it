@@ -1,0 +1,12 @@
+{
+    "id": "T1047",
+    "name": "Hash matching (reduce)",
+    "description": "",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": ["W1132"],
+    "CASE_output_classes" : [],
+    "references": ["todo"]
+}

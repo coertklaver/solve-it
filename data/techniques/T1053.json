@@ -1,0 +1,12 @@
+{
+    "id": "T1053",
+    "name": "Entity extraction",
+    "description": "",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": [],
+    "CASE_output_classes" : [],
+    "references": ["todo"]
+}

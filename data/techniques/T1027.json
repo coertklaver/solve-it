@@ -1,0 +1,12 @@
+{
+    "id": "T1027",
+    "name": "Data read using JTAG",
+    "description": "",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": [],
+    "CASE_output_classes" : [],
+    "references": ["todo"]
+}

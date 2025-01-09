@@ -1,0 +1,12 @@
+{
+    "id": "T1087",
+    "name": "Geospatial analysis",
+    "description": "",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": [],
+    "CASE_output_classes" : [],
+    "references": ["todo"]
+}

@@ -1,0 +1,12 @@
+{
+    "id": "W1037",
+    "name": "Presenting complete data that is in reality a partial set",
+    "INCOMP": "",
+    "INAC-EX": "",
+    "INAC-AS": "",
+    "INAC-ALT": "",
+    "INAC-COR": "",
+    "MISINT": "x",
+    "mitigations": ["M1016", "M1020"],
+    "references": []
+}

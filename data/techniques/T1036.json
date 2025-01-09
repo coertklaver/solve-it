@@ -1,0 +1,12 @@
+{
+    "id": "T1036",
+    "name": "Smudge attack",
+    "description": "",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": [],
+    "CASE_output_classes" : [],
+    "references": ["todo"]
+}

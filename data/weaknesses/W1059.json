@@ -1,0 +1,12 @@
+{
+    "id": "W1059",
+    "name": "Excessive results returned such that careful review of all results is impractical",
+    "INCOMP": "",
+    "INAC-EX": "",
+    "INAC-AS": "",
+    "INAC-ALT": "",
+    "INAC-COR": "",
+    "MISINT": "X",
+    "mitigations": ["M1032", "M1033", "M1038"],
+    "references": []
+}

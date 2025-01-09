@@ -1,0 +1,12 @@
+{
+    "id": "T1039",
+    "name": "App downgrade",
+    "description": "",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": [],
+    "CASE_output_classes" : [],
+    "references": ["todo"]
+}

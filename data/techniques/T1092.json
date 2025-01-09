@@ -1,0 +1,12 @@
+{
+    "id": "T1092",
+    "name": "Produce bookmark-based automated report",
+    "description": "Generate a report in PDF, HTML or other format that compiles bookmarked items from a case into a package that can be reviewed.",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": ["Autopsy", "Axiom"],
+    "weaknesses": ["W1152", "W1153", "W1154"],
+    "CASE_output_classes" : [],
+    "references": []
+}

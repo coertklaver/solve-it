@@ -1,0 +1,12 @@
+{
+    "id": "T1083",
+    "name": "Memory examination (OS-level)",
+    "description": "",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": [],
+    "CASE_output_classes" : [],
+    "references": []
+}

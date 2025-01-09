@@ -1,0 +1,12 @@
+{
+    "id": "T1020",
+    "name": "Mobile file system extraction",
+    "description": "",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": [],
+    "CASE_output_classes" : [],
+    "references": ["todo"]
+}

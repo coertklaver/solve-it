@@ -1,0 +1,12 @@
+{
+    "id": "T1029",
+    "name": "Data read from desoldered eMMC",
+    "description": "",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": [],
+    "CASE_output_classes" : [],
+    "references": ["todo"]
+}

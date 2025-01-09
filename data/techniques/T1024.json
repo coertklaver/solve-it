@@ -1,0 +1,12 @@
+{
+    "id": "T1024",
+    "name": "Cloud data collection via request",
+    "description": "",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": [],
+    "CASE_output_classes" : [],
+    "references": ["todo"]
+}

@@ -1,0 +1,12 @@
+{
+    "id": "T1065",
+    "name": "Content indexer examination (OS)",
+    "description": "Examine information from operating system artefacts relating to content indexing and search capabilities e.g. Windows Desktop Search",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": [],
+    "CASE_output_classes" : [],
+    "references": ["todo"]
+}

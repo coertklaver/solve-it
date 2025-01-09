@@ -1,0 +1,12 @@
+{
+    "id": "W1052",
+    "name": "Incorrect retrieval of results from the index",
+    "INCOMP": "X",
+    "INAC-EX": "X",
+    "INAC-AS": "X",
+    "INAC-ALT": "",
+    "INAC-COR": "",
+    "MISINT": "",
+    "mitigations": ["M1030", "M1034"],
+    "references": []
+}

@@ -1,0 +1,12 @@
+{
+    "id": "T1023",
+    "name": "Cloud data collection using account details",
+    "description": "",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": [],
+    "CASE_output_classes" : [],
+    "references": ["todo"]
+}

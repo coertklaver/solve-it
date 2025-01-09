@@ -1,0 +1,12 @@
+{
+    "id": "T1050",
+    "name": "Hash matching (locate)",
+    "description": "",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": ["W1132"],
+    "CASE_output_classes" : [],
+    "references": ["todo"]
+}

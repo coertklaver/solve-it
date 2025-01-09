@@ -1,0 +1,12 @@
+{
+    "id": "T1016",
+    "name": "Live data collection",
+    "description": "Running commands on a live system to collect specific pieces of information e.g. running processes or open ports",
+    "synonyms": [],
+    "details": "Prior to collecting data from the system, pre-stages are described in (Waits et al 2008) as:\n- Establish trusted command shell\n- Establish method for transmitting and storing the information\n",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": ["W1034", "W1035", "W1036"],
+    "CASE_output_classes" : [],
+    "references": ["Waits, C., Akinyele, J.A., Nolan, R. and Rogers, L., 2008. Computer forensics: results of live response inquiry vs. memory image analysis. CERT program, CMU/SEI-2008-TN-017."]
+}

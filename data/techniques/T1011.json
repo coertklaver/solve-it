@@ -1,0 +1,12 @@
+{
+    "id": "T1011",
+    "name": "Evidence bags",
+    "description": "",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": [],
+    "CASE_output_classes" : [],
+    "references": ["todo"]
+}

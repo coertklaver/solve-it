@@ -1,0 +1,12 @@
+{
+    "id": "T1002",
+    "name": "Disk imaging",
+    "description": "Copying of sectors from a storage media, typically LBA0 to LBAmax into an imaging format. The could be from a traditional hard disk, SSD, USB stick, or data from an eMMC chip that has been desoldered and placed in a reader. ",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": ["dcfldd", "FTK Imager", "Magnet ACQUIRE"],
+    "weaknesses": ["W1004", "W1006", "W1007", "W1013", "W1014", "W1015", "W1016", "W1136", "W1143"],
+    "CASE_output_classes" : ["observable:Image"],
+    "references": ["Nikkel, B., 2016. Practical forensic imaging: securing digital evidence with Linux tools. No Starch Press, Chapter 6, “Forensic Image Acquisition"]
+}

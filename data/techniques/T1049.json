@@ -1,0 +1,13 @@
+{
+    "id": "T1049",
+    "name": "Keyword searching",
+    "description": "This technique involves searching the data for specific strings. This search may be conducted live, directly over the data, or from an generated index of strings extracted from the data. Strings will need to be encoded into bytes to be searched or indexed, and as such specific character encodings will need to be specified. ",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": ["W1052", "W1053", "W1054", "W1055", "W1056", "W1057", "W1058", "W1059"],
+    "CASE_output_classes" : [],
+    "references": ["Beebe, N.L. and Liu, L., 2014. Ranking algorithms for digital forensic string search hits. Digital Investigation, 11, pp.S124-S132.",
+                   "Beebe, N.L. and Clark, J.G., 2007. Digital forensic text string searching: Improving information retrieval effectiveness by thematically clustering search results. Digital investigation, 4, pp.49-54."]
+}

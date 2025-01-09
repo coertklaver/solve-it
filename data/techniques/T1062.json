@@ -1,0 +1,12 @@
+{
+    "id": "T1062",
+    "name": "Decryption of encrypted file systems/volumes",
+    "description": "",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": [],
+    "CASE_output_classes" : [],
+    "references": ["todo"]
+}

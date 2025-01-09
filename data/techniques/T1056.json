@@ -1,0 +1,12 @@
+{
+    "id": "T1056",
+    "name": "Entity connection identification",
+    "description": "",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": [],
+    "CASE_output_classes" : [],
+    "references": ["todo"]
+}

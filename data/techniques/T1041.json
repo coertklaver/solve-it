@@ -1,0 +1,12 @@
+{
+    "id": "T1041",
+    "name": "Pin2Pwn",
+    "description": "",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": [],
+    "CASE_output_classes" : [],
+    "references": ["todo"]
+}

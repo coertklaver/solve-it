@@ -1,0 +1,5 @@
+{
+    "id": "M1048",
+    "name": "Check built-in integrity checks of partition tables where possible",
+    "references" : []
+}

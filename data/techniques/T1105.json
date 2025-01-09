@@ -1,0 +1,12 @@
+{
+    "id": "T1105",
+    "name": "Memory examination (application-level)",
+    "description": "",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": [],
+    "CASE_output_classes" : [],
+    "references": []
+}

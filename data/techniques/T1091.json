@@ -1,0 +1,12 @@
+{
+    "id": "T1091",
+    "name": "Bookmarking",
+    "description": "Making a record of selected files or pieces of data so they can be accessed easily, or used for generating automated reports.",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": ["W1155", "W1156"],
+    "CASE_output_classes" : [],
+    "references": []
+}

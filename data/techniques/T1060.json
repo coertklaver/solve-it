@@ -1,0 +1,14 @@
+{
+    "id": "T1060",
+    "name": "Process file system structures",
+    "description": "This involves parsing the live file system data structures and reconstructing the file system of the target media or device.",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": ["The Sleuth Kit - allows parsing of file system structures", "X-Ways Forensics - allows parsing of file system structures"],
+    "weaknesses": ["W1068", "W1069", "W1070", "W1071", "W1072", "W1073",
+                    "W1074", "W1075", "W1076", "W1077", "W1078", "W1079",
+                    "W1080", "W1081", "W1082", "W1083", "W1084"],
+    "CASE_output_classes" : [],
+    "references": ["Casey, E., Nelson, A. and Hyde, J., 2019. Standardization of file recovery classification and authentication. Digital Investigation, 31, p.100873."]
+}

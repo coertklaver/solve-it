@@ -1,0 +1,6 @@
+{
+    "id": "M1099",
+    "name": "Use a dictionary attack instead",
+    "technique": "T1035",
+    "references" : []
+}

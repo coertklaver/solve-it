@@ -1,0 +1,12 @@
+{
+    "id": "T1098",
+    "name": "User account analysis (OS)",
+    "description": "Examination of information related to user account creation and logins",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": [],
+    "CASE_output_classes" : [],
+    "references": ["todo"]
+}

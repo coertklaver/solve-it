@@ -1,0 +1,12 @@
+{
+    "id": "T1061",
+    "name": "Non-allocated file recovery",
+    "description": "The recovery of files from non-allocated space using residual file system structures.",
+    "synonyms": ["Deleted file recovery"],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": ["W1133", "W1134", "W1135"],
+    "CASE_output_classes" : [],
+    "references": ["todo"]
+}

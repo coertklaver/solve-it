@@ -1,0 +1,12 @@
+{
+    "id": "T1037",
+    "name": "Obtain password from suspect",
+    "description": "",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": [],
+    "CASE_output_classes" : [],
+    "references": ["todo"]
+}

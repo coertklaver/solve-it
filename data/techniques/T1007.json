@@ -1,0 +1,12 @@
+{
+    "id": "T1007",
+    "name": "SyncTriage",
+    "description": "A technique developed in Hargreaves & Marshall (2018) whereby synchronisation artefacts on a device are examined and used to identify the existence of a related device. Also sometimes used to infer activity that occurred on an inaccessible or unavailable device. ",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": ["SyncTriage - https://bitbucket.org/chrishargreaves/synctriage"],
+    "weaknesses": ["W1008", "W1009", "W1010", "W1011", "W1012"],
+    "CASE_output_classes" : ["observable:Device", "observable:Computer", "observable:MobileDevice", "observable:SmartDevice", "observable:WearableDevice"],
+    "references": ["Hargreaves, C. and Marshall, A., 2019. SyncTriage: Using synchronisation artefacts to optimise acquisition order. Digital Investigation, 28, pp.S134-S140."]
+}

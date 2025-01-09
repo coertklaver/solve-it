@@ -1,0 +1,12 @@
+{
+    "id": "T1048",
+    "name": "Privacy protection via partial processing",
+    "description": "",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": [],
+    "CASE_output_classes" : [],
+    "references": ["todo"]
+}

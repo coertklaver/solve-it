@@ -1,0 +1,12 @@
+{
+    "id": "T1100",
+    "name": "EXIF data examination",
+    "description": "",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": [],
+    "CASE_output_classes" : [],
+    "references": ["todo"]
+}

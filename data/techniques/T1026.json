@@ -1,0 +1,12 @@
+{
+    "id": "T1026",
+    "name": "Writing data in standard archive format",
+    "description": "",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": [],
+    "CASE_output_classes" : [],
+    "references": ["todo"]
+}

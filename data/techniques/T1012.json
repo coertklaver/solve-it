@@ -1,0 +1,12 @@
+{
+    "id": "T1012",
+    "name": "Hardware write blockers",
+    "description": "A hardware write blocking device [should] prevent any change to data in the user area of a hard drive while allowing access to all data on a hard drive. (Lyle 2006)",
+    "synonyms": [],
+    "details": "Note that \"Sometimes it may be desirable to change a drive configuration to obtain access to otherwise hidden sectors, for example, such as within an HPA (host protected area).\" (Lyle 2006) ",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": ["W1118", "W1119", "W1120"],
+    "CASE_output_classes" : [],
+    "references": ["Lyle, J.R., 2006. A strategy for testing hardware write block devices. digital investigation, 3, pp.3-9."]
+}

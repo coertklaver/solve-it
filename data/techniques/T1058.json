@@ -1,0 +1,12 @@
+{
+    "id": "T1058",
+    "name": "Mismatched file extension detection",
+    "description": "",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": [],
+    "CASE_output_classes" : [],
+    "references": ["todo"]
+}

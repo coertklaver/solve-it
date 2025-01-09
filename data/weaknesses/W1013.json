@@ -1,0 +1,12 @@
+{
+    "id": "W1013",
+    "name": "Acquisition includes extra bytes",
+    "INCOMP": "",
+    "INAC-EX": "x",
+    "INAC-AS": "",
+    "INAC-ALT": "",
+    "INAC-COR": "",
+    "MISINT": "",
+    "mitigations": ["M1003", "M1009"],
+    "references": []
+}

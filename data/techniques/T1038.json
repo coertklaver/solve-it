@@ -1,0 +1,12 @@
+{
+    "id": "T1038",
+    "name": "Rainbow tables",
+    "description": "",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": [],
+    "CASE_output_classes" : [],
+    "references": ["todo"]
+}

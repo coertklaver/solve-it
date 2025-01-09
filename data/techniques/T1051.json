@@ -1,0 +1,12 @@
+{
+    "id": "T1051",
+    "name": "Fuzzy hash matching",
+    "description": "",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples": [],
+    "weaknesses": [],
+    "CASE_output_classes" : [],
+    "references": ["todo"]
+}

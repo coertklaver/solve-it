@@ -1,0 +1,12 @@
+{
+    "id": "W1057",
+    "name": "Relevant results not captured by the keyword or keyword list used",
+    "INCOMP": "X",
+    "INAC-EX": "",
+    "INAC-AS": "",
+    "INAC-ALT": "",
+    "INAC-COR": "",
+    "MISINT": "",
+    "mitigations": ["M1031", "M1032"],
+    "references": []
+}

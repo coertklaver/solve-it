@@ -1,7 +1,7 @@
 # SOLVE-IT (a Systematic Objective-based Listing of Various Established digital Investigation Techniques)
 
 ## Introduction
-Inspired by the MITRE ATT&CK framework, this repository contains a community project to map the objectives (tactics) and techniques that can be used as part of a digital forensic investigation.
+Inspired by [MITRE ATT&CK](https://attack.mitre.org/matrices/enterprise/), this repository contains a community project to map the objectives (tactics) and techniques that can be used as part of a digital forensic investigation.
 
 ## Viewing the knowledge base
 The high-level concepts are:

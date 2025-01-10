@@ -22,7 +22,7 @@ Each of these concepts are contained in subfolders within the \data subfolder. E
 A utility script is provided, 'generate_excel_from_kb.py'. This python3 script will generate an Excel spreadsheet (solve-it.xlsx) based on the current version of the json data (using the solve-it.json categorisations). This uses the Python xlsxwriter package. 
 
 ## Organisation of the techqniues
-The file solve-it.json is the default categorisation of the techqniues, but other examples are provided in carrier.json and dfrws.json.
+The file solve-it.json is the default categorisation of the techniques, but other examples are provided in carrier.json and dfrws.json.
 
 
 ## Contributing to the knowledge base

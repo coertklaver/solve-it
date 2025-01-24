@@ -1,12 +1,12 @@
 {
     "id": "T1040",
     "name": "Use mobile device exploit",
-    "description": "",
+    "description": "A process that typically exploits a security flaw in a specific device or operating system to enable users to perform higher privileged functions on a device (derived from Grover 2013)",
     "synonyms": [],
     "details": "",
     "subtechniques": [],
-    "examples": [],
-    "weaknesses": [],
+    "examples": ["Checkra1n, https://checkra.in", ""],
+    "weaknesses": ["T1157", "T1158"],
     "CASE_output_classes" : [],
-    "references": ["todo"]
+    "references": ["Grover, J., 2013. Android forensics: Automated data collection and reporting from a mobile device. Digital Investigation, 10, pp.S12-S20."]
 }

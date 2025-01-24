@@ -1,6 +1,6 @@
 {
     "id": "T1007",
-    "name": "SyncTriage",
+    "name": "SyncTriage-based approach",
     "description": "A technique developed in Hargreaves & Marshall (2018) whereby synchronisation artefacts on a device are examined and used to identify the existence of a related device. Also sometimes used to infer activity that occurred on an inaccessible or unavailable device. ",
     "synonyms": [],
     "details": "",

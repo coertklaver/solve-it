@@ -1,12 +1,14 @@
 {
     "id": "T1020",
     "name": "Mobile file system extraction",
-    "description": "",
+    "description": "Using privileged access to a device (rooted/jailbroken), accessing the file system(s) of the device and extracting a set of files",
     "synonyms": [],
-    "details": "",
+    "details": "Note that Fukami et al (2021) states \"In order to conduct effective file system extraction, rooting the device is required.\" See T1040. Usually results in a zip/tar file.",
     "subtechniques": [],
     "examples": [],
-    "weaknesses": [],
-    "CASE_output_classes" : [],
-    "references": ["todo"]
+    "weaknesses": ["W1159", "W1160", "W1161","W1162", "W1163"],
+    "CASE_output_classes" : ["observable:ArchiveFile"],
+    "references": ["Cellebrite (undated), Full File System Extraction - Mobile Device Forensics, https://cellebrite.com/en/glossary/full-file-system-extraction-mobile-device-forensics/",
+        "Fukami, A., Stoykova, R. and Geradts, Z., 2021. A new model for forensic data extraction from encrypted mobile devices. Forensic Science International: Digital Investigation, 38, p.301169.",
+                    "Magnet (2024) Revealing hidden data: Full file system extractions uncovered, https://www.magnetforensics.com/blog/revealing-hidden-data-full-file-system-extractions-uncovered/"]
 }

@@ -1,12 +1,12 @@
 {
     "id": "T1022",
     "name": "Mobile device screenshot based capture",
-    "description": "",
+    "description": "An examiner directly manipulates the target mobile device using the device's input interface (i.e., keypads and buttons), and records the content shown on the display of the device. (Fukami et al 2021)",
     "synonyms": [],
     "details": "",
     "subtechniques": [],
     "examples": [],
     "weaknesses": [],
     "CASE_output_classes" : [],
-    "references": ["todo"]
+    "references": ["Fukami, A., Stoykova, R. and Geradts, Z., 2021. A new model for forensic data extraction from encrypted mobile devices. Forensic Science International: Digital Investigation, 38, p.301169."]
 }

@@ -3,7 +3,7 @@
     "name": "Mobile file system extraction",
     "description": "Using privileged access to a device (rooted/jailbroken), accessing the file system(s) of the device and extracting a set of files",
     "synonyms": [],
-    "details": "Note that Fukami et al (2021) states \"In order to conduct effective file system extraction, rooting the device is required.\" See T1040. Usually results in a zip/tar file.",
+    "details": "Note that Fukami et al (2021) states \"In order to conduct effective file system extraction, rooting the device is required.\" See T1040. Usually results in a zip/tar file. Rooting may provide access to the file system, but files may still be encrypted. Attacking the user pin, usually on device, using T1034, or T1035 may be necessary, unless the PIN can be obtained from the device user (T1037)",
     "subtechniques": [],
     "examples": [],
     "weaknesses": ["W1159", "W1160", "W1161","W1162", "W1163"],

@@ -247,7 +247,7 @@ def main():
         main_worksheet.write_string(start_pos, 4, "INAC-AS", header_type_format)
         main_worksheet.write_string(start_pos, 5, "INAC-ALT", header_type_format)
         main_worksheet.write_string(start_pos, 6, "INAC-COR", header_type_format)
-        main_worksheet.write_string(start_pos, 7, "INAC-MISINT", header_type_format)
+        main_worksheet.write_string(start_pos, 7, "MISINT", header_type_format)
 
         # write all the mitigation titles
         mit_index = {}

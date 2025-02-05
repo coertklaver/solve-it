@@ -6,7 +6,7 @@
     "details": "Note that Fukami et al (2021) states \"In order to conduct effective file system extraction, rooting the device is required.\" See T1040. Usually results in a zip/tar file. Rooting may provide access to the file system, but files may still be encrypted. Attacking the user pin, usually on device, using T1034, or T1035 may be necessary, unless the PIN can be obtained from the device user (T1037)",
     "subtechniques": [],
     "examples": [],
-    "weaknesses": ["W1159", "W1160", "W1161","W1162", "W1163"],
+    "weaknesses": ["W1159", "W1160", "W1161","W1162", "W1163", "W1164"],
     "CASE_output_classes" : ["observable:ArchiveFile"],
     "references": ["Cellebrite (undated), Full File System Extraction - Mobile Device Forensics, https://cellebrite.com/en/glossary/full-file-system-extraction-mobile-device-forensics/",
         "Fukami, A., Stoykova, R. and Geradts, Z., 2021. A new model for forensic data extraction from encrypted mobile devices. Forensic Science International: Digital Investigation, 38, p.301169.",

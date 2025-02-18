@@ -1,12 +1,12 @@
 {
     "id": "T1071",
     "name": "Database examination",
-    "description": "",
-    "synonyms": [],
+    "description": "Examination of a database file(s) to extract information from within",
+    "synonyms": ["database forensics"],
     "details": "",
     "subtechniques": [],
-    "examples": [],
-    "weaknesses": [],
-    "CASE_output_classes" : [],
-    "references": []
+    "examples": ["sqlite-forensic-corpus (2018), https://faui1-files.cs.fau.de/public/sqlite-forensic-corpus/"],
+    "weaknesses": ["W1166","W1167","W1168","W1169", "W1170", "W1171"],
+    "CASE_output_classes" : ["observable:recordFieldName", "observable:recordFieldValue", "observable:recordRowID", "observable:SQLiteBlob"],
+    "references": ["Nemetz, S., Schmitt, S. and Freiling, F., 2018. A standardized corpus for SQLite database forensics. Digital Investigation, 24, pp.S121-S130."]
 }

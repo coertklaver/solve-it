@@ -60,13 +60,13 @@
     {"name":"Extract Application-based Information",
     "description": "todo",
     "techniques": ["T1069", "T1073", "T1072", "T1078",
-                    "T1071", "T1070", "T1075", "T1077", "T1074", "T1105", "T1107",
+                    "T1070", "T1075", "T1077", "T1074", "T1105", "T1107",
                     "T1108", "T1109"]
     },
 
     {"name":"Examine data at the file-level",
     "description": "todo",
-    "techniques": ["T1079", "T1082", "T1081", "T1100", "T1080", "T1099", "T1106"]
+    "techniques": ["T1079", "T1082", "T1081", "T1100", "T1080", "T1099", "T1106", "T1071"]
     },
 
     {"name":"Establish Identities",

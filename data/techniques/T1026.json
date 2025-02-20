@@ -1,12 +1,12 @@
 {
     "id": "T1026",
     "name": "Writing data in standard archive format",
-    "description": "",
+    "description": "Storing acquired data in a standard archive format such as rar, tar or zip",
     "synonyms": [],
     "details": "",
     "subtechniques": [],
     "examples": [],
-    "weaknesses": [],
-    "CASE_output_classes" : [],
-    "references": ["todo"]
+    "weaknesses": ["W1164"],
+    "CASE_output_classes" : ["observable:ArchiveFile"],
+    "references": []
 }

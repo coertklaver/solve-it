@@ -39,6 +39,7 @@ def load_weaknesses(path_to_weaknesses):
             f = open(os.path.join(path_to_weaknesses, each))
             weakness_dict = json.loads(f.read())
             weaknesses[weakness_dict.get('id')] = weakness_dict
+            weaknesses[weakness_dict.get('id')]['in_techniques'] = []
     return weaknesses
 
 
@@ -50,6 +51,8 @@ def load_mitigations(path_to_mitigations):
             f = open(os.path.join(path_to_mitigations, each))
             mit_dict = json.loads(f.read())
             mitigations[mit_dict.get('id')] = mit_dict
+            mitigations[mit_dict.get('id')]['in_techniques'] = []
+            mitigations[mit_dict.get('id')]['in_weaknesses'] = []
     return mitigations
 
 
@@ -83,7 +86,25 @@ def format_techinque_sheet(worksheet):
     return worksheet
 
 
+def update_mitigation_usuages(mitigations, techniques):
+    '''Adds a list of all techniques and weaknesses that reference the mitigation'''
+    for each_technique in techniques:
+        for each_weakness in techniques[each_technique].get('weaknesses'):
+            for each_mitigation in weaknesses[each_weakness].get('mitigations'):
+                if each_weakness not in mitigations[each_mitigation]['in_weaknesses']:
+                    mitigations[each_mitigation]['in_weaknesses'].append(each_weakness)
+                if each_technique not in mitigations[each_mitigation]['in_techniques']:
+                    mitigations[each_mitigation]['in_techniques'].append(each_technique)
+    return mitigations
 
+
+def update_weakness_usages(weaknesses, techniques):
+    '''Adds a list of all techqinues that reference the weakness'''
+    for each_technique in techniques:
+        for each_weakness in techniques[each_technique].get('weaknesses'):
+            if each_technique not in weaknesses[each_weakness]['in_techniques']:
+                    weaknesses[each_weakness]['in_techniques'].append(each_technique)
+    return weaknesses
 
 if __name__ == '__main__':
 
@@ -93,6 +114,10 @@ if __name__ == '__main__':
     techniques = load_techniques(path_to_techniques)
     weaknesses = load_weaknesses(path_to_weaknesses)
     mitigations = load_mitigations(path_to_mitigations)
+
+    weaknesses = update_weakness_usages(weaknesses, techniques)
+    mitigations = update_mitigation_usuages(mitigations, techniques)
+
 
     workbook = xlsxwriter.Workbook('solve-it.xlsx')
     workbook.add_worksheet(name='Main')
@@ -126,13 +151,29 @@ if __name__ == '__main__':
         weaknesses_sheet.write_number(i+1, 2, len(weaknesses[each_weakness].get('mitigations', [])))
         if len(weaknesses[each_weakness].get('mitigations', [])) == 0:
             weaknesses_sheet.write_string(i+1, 3, "x")
-        weaknesses_sheet.write_string(0, 2, "Mitigations")
+        weaknesses_sheet.write_string(i + 1, 4, str(weaknesses[each_weakness].get('in_techniques')))
+
+    # write some headers for weakness sheet
+    weaknesses_sheet.write_string(0, 0, "ID")
+    weaknesses_sheet.write_string(0, 1, "Description")
+    weaknesses_sheet.write_string(0, 2, "Mitigations")
+    weaknesses_sheet.write_string(0, 3, "Has none")
+    weaknesses_sheet.write_string(0, 4, "In technique")
 
 
     for i, each_mitigation in enumerate(sorted(mitigations)):
-        mitigations_sheet.write_string(i, 0, each_mitigation)
-        mitigations_sheet.write_string(i, 1, mitigations[each_mitigation].get('name'))
+        mitigations_sheet.write_string(i+1, 0, each_mitigation)
+        mitigations_sheet.write_string(i+1, 1, mitigations[each_mitigation].get('name'))
+        mitigations_sheet.write_string(i+1, 2, str(mitigations[each_mitigation].get('in_techniques')))
+        mitigations_sheet.write_string(i+1, 3, str(mitigations[each_mitigation].get('in_weaknesses')))
+        mitigations_sheet.write_number(i + 1, 4, len(mitigations[each_mitigation].get('in_weaknesses')))
 
+    # write some headers for weakness sheet
+    mitigations_sheet.write_string(0, 0, "ID")
+    mitigations_sheet.write_string(0, 1, "Description")
+    mitigations_sheet.write_string(0, 2, "In techniques")
+    mitigations_sheet.write_string(0, 3, "In weakness")
+    mitigations_sheet.write_string(0, 4, "Weakness occurances")
 
     print('worksheets added.')
 

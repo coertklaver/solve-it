@@ -1,12 +1,12 @@
 {
     "id": "T1013",
     "name": "Software write blockers",
-    "description": "",
+    "description": "Use of a software-based tool that prevents a computer from writing to computer storage media connected to it (NIST 2006)",
     "synonyms": [],
     "details": "",
     "subtechniques": [],
     "examples": [],
     "weaknesses": [],
     "CASE_output_classes" : [],
-    "references": ["todo"]
+    "references": ["NIST (2006) NIST SP 800-86 Guide to Integrating Forensic Techniques into Incident Response, https://doi.org/10.6028/NIST.SP.800-86"]
 }

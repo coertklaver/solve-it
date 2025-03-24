@@ -3,6 +3,11 @@
 ## Introduction
 Inspired by [MITRE ATT&CK](https://attack.mitre.org/matrices/enterprise/), this repository contains a community project to map the objectives (tactics) and techniques that can be used as part of a digital forensic investigation.
 
+The SOLVE-IT knowledge base was introduced at [DFRWS EU 2025](https://dfrws.org/eu-2025-program/). The associated academic paper in [FSI:Digital Investigation](https://www.sciencedirect.com/science/article/pii/S2666281725000034) can be cited as:
+
+```Hargreaves, C., van Beek, H., Casey, E., SOLVE-IT: A proposed digital forensic knowledge base inspired by MITRE ATT&CK, Forensic Science International: Digital Investigation, Volume 52, Supplement, 2025, 301864, ISSN 2666-2817, https://doi.org/10.1016/j.fsidi.2025.301864```
+
+
 ## Viewing the knowledge base
 The high-level concepts are:
 

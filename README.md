@@ -29,7 +29,7 @@ A utility script is provided, 'generate_excel_from_kb.py'. This python3 script w
 
 A another utility script 'generate_case_evaluation.py' can be used with a list of technqiue IDs provided as command line arguments. This provides a repackaged checklist of the supplied technqiues, with their weaknesses and potential mitigations. This can be used to review a case, an SOP, a tool workflow, and more. 
 
-## Organisation of the techqniues
+## Organisation of the techniques
 The file solve-it.json is the default categorisation of the techniques, but other examples are provided in carrier.json and dfrws.json.
 
 
@@ -42,9 +42,9 @@ New techniques can be added by creating a new json file in the same structure. T
 You can reference weaknesses and mitigations, either existing ones in the /data/weaknesses or /data/mitigations folders, or create new.
 
 ## Notes on references
-Techniques, weaknesses, and mitigations can, and should, contain references to support the information within. The references should be in the approporiate file, e.g. if a reference is supporting defining a technique then it ought to be in the json file for the techniques (Txxxx), if it is highlighting a weakness then it should be in an weakness (Wxxxx) json file, and if it is describing a mitigation then it should be in the mitigation (Mxxxx) json file. 
+Techniques, weaknesses, and mitigations can, and should, contain references to support the information within. The references should be in the appropriate file, e.g. if a reference is supporting defining a technique then it ought to be in the json file for the techniques (Txxxx), if it is highlighting a weakness then it should be in an weakness (Wxxxx) json file, and if it is describing a mitigation then it should be in the mitigation (Mxxxx) json file. 
 
-References should not be added just becuase they are about a topic, but should have menaingful implications in terms of explaining a techqniue, highlighting a weakness, or providing a mitigation.
+References should not be added just because they are about a topic, but should have meaningful implications in terms of explaining a technique, highlighting a weakness, or providing a mitigation.
 
 For large references, consider supplying the page or chapter number if appropriate. 
 

@@ -26,6 +26,7 @@ Each of these concepts are contained in subfolders within the \data subfolder. E
 
 A utility script is provided, 'generate_excel_from_kb.py'. This python3 script will generate an Excel spreadsheet (solve-it.xlsx) based on the current version of the json data (using the solve-it.json categorisations). This uses the Python xlsxwriter package. 
 
+Pre-generated xlxs files can be found in the releases section.
 
 A another utility script 'generate_case_evaluation.py' can be used with a list of technqiue IDs provided as command line arguments. This provides a repackaged checklist of the supplied technqiues, with their weaknesses and potential mitigations. This can be used to review a case, an SOP, a tool workflow, and more. 
 

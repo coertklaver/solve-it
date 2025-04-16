@@ -109,8 +109,9 @@ if __name__ == '__main__':
         technique_list[parts[0]] = ''
         technique_list[parts[1].strip()] = ''
 
-    # render1(kb, g, technique_list)
-    #render2(kb, g, technique_list)
-    render3(kb, g, technique_list)
+    render1(kb, g, technique_list) # this is the set of techqniues listed, with the specific weakness dependencies overlayed
+    # render2(kb, g, technique_list) #this is all weaknesses of the techqnieus listed
+    # render3(kb, g, technique_list) # this is a basic view of just weaknesses
 
     g.view()
+

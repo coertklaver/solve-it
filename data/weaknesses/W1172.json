@@ -1,0 +1,13 @@
+{
+    "id": "W1172",
+    "name": "Relevant reference data missed as its necessity was not known at time of preservation",
+    "INCOMP": "X",
+    "INAC-EX": "X",
+        "INAC-EX_comment": "Missing reference data means inference of event that did not happen",
+    "INAC-AS": "X",
+    "INAC-ALT": "",
+    "INAC-COR": "",
+    "MISINT": "",
+    "mitigations": [],
+    "references": []
+}

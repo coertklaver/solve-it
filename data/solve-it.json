@@ -6,7 +6,7 @@
 
     {"name":"Preserve",
     "description": "todo",
-    "techniques": ["T1014", "T1011", "T1010", "T1012", "T1013"]
+    "techniques": ["T1014", "T1011", "T1010", "T1012", "T1013", "T1110"]
     },
 
     {"name":"Prioritise",

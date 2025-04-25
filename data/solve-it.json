@@ -89,7 +89,7 @@
     "techniques": ["T1090", "T1095", "T1089", "T1101"]
     },
 
-    {"name":"Reporting",
+    {"name":"Documentation",
     "description": "todo",
     "techniques": ["T1091", "T1094", "T1092", "T1093"]
     }

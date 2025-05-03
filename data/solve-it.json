@@ -1,7 +1,12 @@
 [
-    {"name":"Survey",
+    {"name":"Find potential evidence sources",
     "description": "todo",
     "techniques": ["T1005", "T1006", "T1009", "T1008", "T1007"]
+    },
+
+    {"name":"Prioritise",
+    "description": "todo",
+    "techniques": ["T1001"]
     },
 
     {"name":"Preserve",
@@ -9,10 +14,6 @@
     "techniques": ["T1014", "T1011", "T1010", "T1012", "T1013"]
     },
 
-    {"name":"Prioritise",
-    "description": "todo",
-    "techniques": ["T1001"]
-    },
 
     {"name":"Acquire",
     "description": "todo",
@@ -38,12 +39,6 @@
     "techniques": ["T1047", "T1048", "T1046"]
     },
 
-    {"name":"Locate Relevant Digital Artefacts",
-    "description": "todo",
-    "techniques": ["T1054", "T1053", "T1056", "T1055",
-                    "T1051", "T1050", "T1049", "T1058",
-                    "T1057", "T1052"]
-    },
 
     {"name":"Extract Partition and File System Information",
     "description": "todo",
@@ -68,6 +63,14 @@
     "description": "todo",
     "techniques": ["T1079", "T1082", "T1081", "T1100", "T1080", "T1099", "T1106", "T1071"]
     },
+
+    {"name":"Locate Relevant Digital Artefacts",
+    "description": "todo",
+    "techniques": ["T1054", "T1053", "T1056", "T1055",
+                    "T1051", "T1050", "T1049", "T1058",
+                    "T1057", "T1052"]
+    },
+
 
     {"name":"Establish Identities",
     "description": "todo",

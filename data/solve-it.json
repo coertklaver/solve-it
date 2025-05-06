@@ -1,12 +1,7 @@
 [
-    {"name":"Survey",
+    {"name":"Find potential evidence sources",
     "description": "todo",
     "techniques": ["T1005", "T1006", "T1009", "T1008", "T1007"]
-    },
-
-    {"name":"Preserve",
-    "description": "todo",
-    "techniques": ["T1014", "T1011", "T1010", "T1012", "T1013"]
     },
 
     {"name":"Prioritise",
@@ -14,12 +9,19 @@
     "techniques": ["T1001"]
     },
 
+    {"name":"Preserve",
+    "description": "todo",
+    "techniques": ["T1014", "T1011", "T1010", "T1012", "T1013", "T1110"]
+    },
+
+
     {"name":"Acquire",
     "description": "todo",
     "techniques": ["T1028", "T1023", "T1024", "T1029", "T1030",
                     "T1027", "T1002", "T1016", "T1003", "T1019",
                     "T1022", "T1020", "T1017", "T1015",
-                    "T1018", "T1004", "T1026", "T1025", "T1104"]
+                    "T1018", "T1004", "T1026", "T1025", "T1104",
+                    "T1112", "T1113"]
     },
 
     {"name":"Gain Access",
@@ -38,12 +40,6 @@
     "techniques": ["T1047", "T1048", "T1046"]
     },
 
-    {"name":"Locate Relevant Digital Artefacts",
-    "description": "todo",
-    "techniques": ["T1054", "T1053", "T1056", "T1055",
-                    "T1051", "T1050", "T1049", "T1058",
-                    "T1057", "T1052"]
-    },
 
     {"name":"Extract Partition and File System Information",
     "description": "todo",
@@ -69,6 +65,14 @@
     "techniques": ["T1079", "T1082", "T1081", "T1100", "T1080", "T1099", "T1106", "T1071"]
     },
 
+    {"name":"Locate Relevant Digital Artefacts",
+    "description": "todo",
+    "techniques": ["T1054", "T1053", "T1056", "T1055",
+                    "T1051", "T1050", "T1049", "T1058",
+                    "T1057", "T1052"]
+    },
+
+
     {"name":"Establish Identities",
     "description": "todo",
     "techniques": ["T1084", "T1085"]
@@ -89,7 +93,7 @@
     "techniques": ["T1090", "T1095", "T1089", "T1101"]
     },
 
-    {"name":"Reporting",
+    {"name":"Documentation",
     "description": "todo",
     "techniques": ["T1091", "T1094", "T1092", "T1093"]
     }

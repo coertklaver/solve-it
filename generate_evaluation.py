@@ -153,6 +153,7 @@ def main():
         # print them all
         techniques_to_print = kb.list_techniques()
     else:
+        # Take them from the CLI arguments
         techniques_to_print = args.techniques
 
     print(techniques_to_print)

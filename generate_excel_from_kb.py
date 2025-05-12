@@ -28,10 +28,11 @@ def format_techinque_sheet(worksheet):
     return worksheet
 
 
-
 if __name__ == '__main__':
 
+    # Replace technique organisation configuration file here if needed
     kb = solveitcore.SOLVEIT('data', 'solve-it.json')
+    # kb = solveitcore.SOLVEIT('data', 'carrier.json')
 
     tactics_name_list = kb.list_tactics()
 
@@ -157,8 +158,12 @@ if __name__ == '__main__':
         column = tactics_name_list.index(tactic)
 
         for each_technique_id in sorted(each_tactic.get('techniques')):
-            technique_name = kb.get_technique(each_technique_id).get('name')
+
             each_technique = kb.get_technique(each_technique_id)
+            if each_technique is None:
+                raise ValueError("Technique {} not found".format(each_technique_id))
+
+            technique_name = each_technique.get('name')
 
             try:
                 row = tactics_row_indexes[tactic]

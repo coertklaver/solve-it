@@ -186,7 +186,7 @@ if __name__ == '__main__':
     # check if any are missed from index sheet
 
     for each in kb.list_techniques():
-        if each not in techniques_added:
+        if each not in techniques_added and each != "T1000":  # T1000 is demo technique so not expected to be referenced
             print("WARNING: Technique {} exists, but is not indexed in sheet".format(each))
 
 

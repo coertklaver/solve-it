@@ -6,7 +6,7 @@
                     "T1022", "T1020", "T1017", "T1015",
                     "T1018", "T1004", "T1026", "T1025", "T1014", "T1011",
                     "T1010", "T1012", "T1013"],
-      "references": ["Carrier, B., 2003. Open source digital forensics tools. The legal argument."]
+      "references": ["Carrier, B., 2002. Open source digital forensics tools. The legal argument."]
     },
 
     {"name":"Analysis",
@@ -21,13 +21,13 @@
                     "T1087", "T1088", "T1086", "T1039", "T1034", "T1035", "T1033", "T1031", "T1041", "T1038", "T1032", "T1036", "T1040",
                     "T1045", "T1042", "T1043", "T1044"
     ],
-      "references": ["Carrier, B., 2003. Open source digital forensics tools. The legal argument."]
+      "references": ["Carrier, B., 2002. Open source digital forensics tools. The legal argument."]
     },
 
     {"name":"Presentation",
     "description": "The presentation phase presents the conclusions and corresponding evidence from the investigation (Carrier 2003)",
     "techniques": ["T1091", "T1094", "T1092", "T1093"],
-    "references": ["Carrier, B., 2003. Open source digital forensics tools. The legal argument."]
+    "references": ["Carrier, B., 2002. Open source digital forensics tools. The legal argument."]
     },
 
     {"name":"NA",

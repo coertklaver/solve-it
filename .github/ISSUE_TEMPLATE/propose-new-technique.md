@@ -1,6 +1,6 @@
 ---
 name: Propose New Technique
-about: You can use this template to propose a new technique
+about: Propose a new technique, with details
 title: 'Create new technique: [technique name]'
 labels: solve-it content update
 assignees: ''

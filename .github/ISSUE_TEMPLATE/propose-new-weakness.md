@@ -1,6 +1,6 @@
 ---
 name: Propose New Weakness
-about: You can use this template to propose a new weakness
+about: Propose a new weakness, with details
 title: 'Create new weakness: [weakness name]'
 labels: solve-it content update
 assignees: ''
@@ -31,6 +31,9 @@ If this is unclear just note if this affects any of the following properties of 
   * References
 ...
 
+
+### Relevant Techniques
+*Techniques that this weakness applies to e.g. Txxxx*
 
 ### References
 References to support the details provided above

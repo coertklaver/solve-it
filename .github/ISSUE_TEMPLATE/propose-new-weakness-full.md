@@ -1,5 +1,5 @@
 ---
-name: Propose New Weakness
+name: Propose New Weakness FULL
 about: Propose a new weakness, with details
 title: 'Create new weakness: [weakness name]'
 labels: solve-it content update

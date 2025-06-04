@@ -35,8 +35,8 @@ All content contributions should start in the issue tracker, since discussion is
 This is the easiest way to propose updates to content in the SOLVE-IT knowledge base.
 
 * Visit the SOLVE-IT [issue tracker](https://github.com/SOLVE-IT-DF/solve-it/issues).
-* Select one of the templates. We offer 'FULL' or 'LITE' templates for content contributions:
-  * FULL asks for all the details needed to populate the content in a structured for.
+* Select one of the templates. We offer 'STANDARD' or 'LITE' templates for content contributions:
+  * STANDARD asks for all the details needed to populate the content in a structured for.
   * LITE requests the miminal information needed, with a free text 'notes' section for additional information.
 * Submit the suggestion as a github issue for review.
 

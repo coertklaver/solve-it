@@ -1,5 +1,5 @@
 ---
-name: Propose New Technique FULL
+name: Propose New Technique STANDARD
 about: Propose a new technique, with details
 title: 'Create new technique: [technique name]'
 labels: solve-it content update

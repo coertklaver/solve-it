@@ -20,9 +20,11 @@ import json
 import xlsxwriter
 import argparse
 import sys
+import logging
 import solveitcore
 from xlsxwriter.utility import xl_col_to_name
 
+# logging.basicConfig(level=logging.DEBUG)
 
 def generate_evaluation(techniques=None, lab_config=None, output_file=None, labels=None):
     """Generate an evaluation spreadsheet for the specified techniques.
@@ -238,8 +240,10 @@ def generate_evaluation(techniques=None, lab_config=None, output_file=None, labe
 
         if labels is None:  # Condition here is placeholder for label checking and displaying
             technique_header_str = "{}".format(technique.get('name'))
+            full_technique_identifier = "{}:{}".format(each_technique, technique.get('name'))
         else:
             technique_header_str = "{}: {}".format(technique.get('name'), labels[t_pos])
+            full_technique_identifier = "{}:{}:{}".format(each_technique, technique.get('name'), labels[t_pos])
 
         # main_worksheet.set_row(start_pos, 26)
         # cell_ref = "A" + str(start_pos + 1) + ":B" + str(start_pos + 1)
@@ -297,16 +301,29 @@ def generate_evaluation(techniques=None, lab_config=None, output_file=None, labe
                                              {'validate': 'list',
                                               'source': ['Y', 'N', 'NA']})
 
-                # If a lab config file is in use, write the status and notes for this mitigation
-                if each_mit in lab_config_data:
-                    main_worksheet.write_string('{}{}'.format(xl_col_to_name(mit_index[each_mit]), str(start_pos + 2)),
-                                              lab_config_data[each_mit].get('status'))
-
-                    main_worksheet.write_string('{}{}'.format('AH', str(start_pos + 2)),
-                                              lab_config_data[each_mit].get('notes'))
-                else:  # write blank to start with
-                    main_worksheet.write_string('{}{}'.format(xl_col_to_name(mit_index[each_mit]), str(start_pos + 2)),
+                # Write blank mitigation status to start with (may get overwritten by lab config later)
+                main_worksheet.write_string('{}{}'.format(xl_col_to_name(mit_index[each_mit]), str(start_pos + 2)),
                                               "-")
+
+                # Update weakness/mitigation status if a lab config file is in use
+                if lab_config is not None:
+                    if full_technique_identifier in lab_config_data:  # if there is data for this technique
+                        lab_technique_data = lab_config_data.get(full_technique_identifier)
+                        logging.debug('found technique {}'.format({full_technique_identifier}))
+                        if each_weakness in lab_technique_data:
+                            logging.debug('found weakness {} ({})'.format(each_weakness, weakness_info.get('name')))
+                            lab_weakness_data = lab_technique_data.get(each_weakness)
+                            if each_mit in lab_weakness_data:
+                                logging.debug('found mitigation {}'.format(each_mit))
+                                # Found a mitigation in the lab config file
+                                lab_mit_data = lab_weakness_data.get(each_mit)
+                                main_worksheet.write_string(
+                                    '{}{}'.format(xl_col_to_name(mit_index[each_mit]), str(start_pos + 2)),
+                                    lab_mit_data.get('status'))
+                                main_worksheet.write_string('{}{}'.format('AH', str(start_pos + 2)),
+                                                            lab_mit_data.get('notes'))
+                    else:
+                        logging.debug('technique {} NOT FOUND IN CONFIG'.format({full_technique_identifier}))
 
             # Add Excel formulas for automatic calculations of mitigation statistics
             # These formulas help evaluate the status of mitigations for each weakness

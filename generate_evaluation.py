@@ -16,6 +16,7 @@ by other Python code.
 """
 
 import os
+import sys
 import json
 import xlsxwriter
 import argparse
@@ -238,7 +239,7 @@ def generate_evaluation(techniques=None, lab_config=None, output_file=None, labe
             main_worksheet.write_string(start_pos, i, '', cell_format=blank_grey_format)
         start_pos += 1
 
-        if labels is None:  # Condition here is placeholder for label checking and displaying
+        if labels is None: 
             technique_header_str = "{}".format(technique.get('name'))
             full_technique_identifier = "{}:{}".format(each_technique, technique.get('name'))
         else:

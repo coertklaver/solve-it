@@ -150,3 +150,4 @@ class SOLVEIT(object):
                 max_mits = len(mits)
 
         return max_mits
+

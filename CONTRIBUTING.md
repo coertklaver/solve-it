@@ -59,8 +59,16 @@ This is the easiest way to propose updates to content in the SOLVE-IT knowledge 
 * New techniques can be added by creating a new json file in the same structure. Technique `T1000.json` provides a template.
 * You can reference weaknesses and mitigations, either existing ones in the `/data/weaknesses` or `/data/mitigations` folders, or create new.
 
-### Notes on references
+## Notes on references
 * Techniques, weaknesses, and mitigations can, and should, contain references to support the information within. 
 * The references should be in the appropriate file, e.g. if a reference is supporting defining a technique then it ought to be in the json file for the techniques (Txxxx), if it is highlighting a weakness then it should be in an weakness (Wxxxx) json file, and if it is describing a mitigation then it should be in the mitigation (Mxxxx) json file. 
 * References should not be added just because they are about a topic, but should have meaningful implications in terms of explaining a technique, highlighting a weakness, or providing a mitigation.
 * For large references, consider supplying the page or chapter number if appropriate. 
+
+## Common mitigations
+* There are some mitigations that are quite generic and often applicable:
+  * M1027 Dual tool verification
+  * M1050 Manual verification of relevant data
+ 
+* Note: They will not always be appropriate e.g. it is very difficult to manually verify that parsing of all live files on a disk image was done correctly.
+* Note: Mitigations for testing are usually more specific for the thing that needs to be tested.

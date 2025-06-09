@@ -57,7 +57,7 @@
     {"name":"Extract Operating System Feature Information",
     "description": "todo",
     "techniques": ["T1067", "T1065", "T1097", "T1066",
-                    "T1068", "T1096", "T1098", "T1083"]
+                    "T1068", "T1096", "T1098", "T1083", "T1116"]
     },
 
     {"name":"Extract Application-based Information",

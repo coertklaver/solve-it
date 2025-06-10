@@ -25,6 +25,9 @@ def main():
                         help="Print the weaknesses from SOLVE-IT in TSV format")
     parser.add_argument('--mitigations', '-m', action='store_true',
                         help="Print the mitigations from SOLVE-IT in TSV format")
+    parser.add_argument('--long', '-l', action='store_true',
+                        help="Print extended fields other than ID and name")
+
     args = parser.parse_args()
 
     kb = solveitcore.SOLVEIT('data', 'solve-it.json')
@@ -40,11 +43,16 @@ def main():
         for each_technique_id in techniques:
             if each_technique_id != "T1000":
                 each_technique = kb.get_technique(each_technique_id)
-                print('{}\t{}\t{}\t{}'.format(each_technique_id,
-                                                  each_technique.get('name'),
-                                                  each_technique.get('description'),
-                                                  each_technique.get('synonyms'),)
-                      )
+                if args.long is True:
+                    print('{}\t{}\t{}\t{}'.format(each_technique_id,
+                                                      each_technique.get('name'),
+                                                      each_technique.get('description'),
+                                                      each_technique.get('synonyms'),)
+                          )
+                else:
+                    print('{}\t{}\t'.format(each_technique_id,
+                                                  each_technique.get('name'))
+                          )
     elif args.weaknesses is True:
         print('ID\tName')
         for each_weakness in kb.list_weaknesses():

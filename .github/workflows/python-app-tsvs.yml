@@ -35,7 +35,9 @@ jobs:
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git add info/stats.txt
+        git add info/techniques.txt
+        git add info/weaknesses.txt
+        git add info/mitigations.txt
         git commit -m "Update stats [skip ci]" || echo "No changes to commit"
         git push
       env:

@@ -102,7 +102,7 @@ T1102	Decode data from image from unmanaged NAND
 T1103	Virtualise suspect system for previewing	
 T1104	Collect data using open source intelligence	
 T1105	Memory examination (application-level)	
-T1106	Deep Fake Detection (Video)	
+T1106	Deep fake detection (video)	
 T1107	Health/Fitness app examination	
 T1108	Reminders app examination	
 T1109	Payment app examination	

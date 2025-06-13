@@ -4,36 +4,36 @@ import solveitcore
 class MyTestCase(unittest.TestCase):
 
     def test_kb_loads(self):
-        kb = solveitcore.SOLVEIT('data', 'solve-it-test.json')
+        kb = solveitcore.SOLVEIT('test_data', 'solve-it-test.json')
         self.assertEqual(type(kb), solveitcore.SOLVEIT)
 
     def test_list_retrieval(self):
-        kb = solveitcore.SOLVEIT('data', 'solve-it-test.json')
+        kb = solveitcore.SOLVEIT('test_data', 'solve-it-test.json')
         self.assertEqual(list, type(kb.list_techniques()))
         self.assertEqual(list, type(kb.list_tactics()))
         self.assertEqual(list, type(kb.list_weaknesses()))
         self.assertEqual(list, type(kb.list_mitigations()))
 
     def test_technique_list_contents(self):
-        kb = solveitcore.SOLVEIT('data', 'solve-it-test.json')
+        kb = solveitcore.SOLVEIT('test_data', 'solve-it-test.json')
         self.assertEqual(['T1001'], kb.list_techniques())
 
     def test_tactic_list_contents(self):
-        kb = solveitcore.SOLVEIT('data', 'solve-it-test.json')
+        kb = solveitcore.SOLVEIT('test_data', 'solve-it-test.json')
         self.assertEqual(['Prioritise', 'Acquire'], kb.list_tactics())
 
     def test_weakness_list_contents(self):
-        kb = solveitcore.SOLVEIT('data', 'solve-it-test.json')
+        kb = solveitcore.SOLVEIT('test_data', 'solve-it-test.json')
         self.assertEqual(['W1001', 'W1002', 'W1003'], kb.list_weaknesses())
 
     def test_mitigations_list_contents(self):
-        kb = solveitcore.SOLVEIT('data', 'solve-it-test.json')
+        kb = solveitcore.SOLVEIT('test_data', 'solve-it-test.json')
         self.assertEqual(['M1001', 'M1007', 'M1008'], kb.list_mitigations())
 
     # Content retreival
 
     def test_get_technique(self):
-        kb = solveitcore.SOLVEIT('data', 'solve-it-test.json')
+        kb = solveitcore.SOLVEIT('test_data', 'solve-it-test.json')
 
         self.assertEqual(dict, type(kb.get_technique('T1001')))
         self.assertEqual('T1001', kb.get_technique('T1001').get('id'))
@@ -52,12 +52,12 @@ class MyTestCase(unittest.TestCase):
                          kb.get_technique('T1001').get('references'))
 
     def test_get_technique_na(self):
-        kb = solveitcore.SOLVEIT('data', 'solve-it-test.json')
+        kb = solveitcore.SOLVEIT('test_data', 'solve-it-test.json')
 
         self.assertEqual(None, kb.get_technique('T9999'))
 
     def test_get_weakness(self):
-        kb = solveitcore.SOLVEIT('data', 'solve-it-test.json')
+        kb = solveitcore.SOLVEIT('test_data', 'solve-it-test.json')
         self.assertEqual(dict, type(kb.get_weakness('W1001')))
         self.assertEqual('W1001', kb.get_weakness('W1001').get('id'))
         self.assertEqual('Excluding a device that contains relevant information', kb.get_weakness('W1001').get('name'))
@@ -71,18 +71,18 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual([], kb.get_weakness('W1001').get('references'))
 
     def test_get_weakness_usage(self):
-        kb = solveitcore.SOLVEIT('data', 'solve-it-test.json')
+        kb = solveitcore.SOLVEIT('test_data', 'solve-it-test.json')
         self.assertEqual(['T1001'], kb.get_weakness('W1001').get('in_techniques'))
 
     def test_get_mitigation(self):
-        kb = solveitcore.SOLVEIT('data', 'solve-it-test.json')
+        kb = solveitcore.SOLVEIT('test_data', 'solve-it-test.json')
         self.assertEqual(dict, type(kb.get_mitigation('M1001')))
         self.assertEqual('M1001', kb.get_mitigation('M1001').get('id'))
         self.assertEqual('Review of all triage results that are relied on during the full digital forensic examination', kb.get_mitigation('M1001').get('name'))
         self.assertEqual([], kb.get_mitigation('M1001').get('references'))
 
     def test_get_mitigation_usage(self):
-        kb = solveitcore.SOLVEIT('data', 'solve-it-test.json')
+        kb = solveitcore.SOLVEIT('test_data', 'solve-it-test.json')
         self.assertEqual(['T1001'], kb.get_mitigation('M1001').get('in_techniques'))
         self.assertEqual(['W1003'], kb.get_mitigation('M1001').get('in_weaknesses'))
 

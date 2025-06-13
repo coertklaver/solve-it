@@ -131,3 +131,5 @@ M1130	Disable Secureboot in BIOS to permit bootable environment to load (risks w
 M1131	Use a Trusted Bootable Environment that supports accessing the internal disk
 M1132	Use a Trusted Bootable Environment that supports decryption of the internal disk
 M1133	Acquire the encrypted contents of the internal disk and decrypt the copy within a virtualized environment
+M1134	Testing that connected devices are detected.
+M1135	Testing that correct metadata/status of connected devices is extracted

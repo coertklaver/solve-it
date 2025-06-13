@@ -30,17 +30,25 @@ jobs:
       run: |
         mkdir -p info
         python generate_stat_summary.py > info/stats.txt
+        python generate_tsv_from_kb.py -o > info/objectives.txt
         python generate_tsv_from_kb.py -t > info/techniques.txt
+        python generate_tsv_from_kb.py -t -l > info/techniques_long.txt
         python generate_tsv_from_kb.py -w > info/weaknesses.txt
+        python generate_tsv_from_kb.py -w -l > info/weaknesses_long.txt
         python generate_tsv_from_kb.py -m > info/mitigations.txt
+        python generate_tsv_from_kb.py -c > info/CASE_mapping.txt
     - name: Commit and push changes
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git add info/stats.txt
+        git add info/objectives.txt
         git add info/techniques.txt
+        git add info/techniques_long.txt
         git add info/weaknesses.txt
+        git add info/weaknesses_long.txt
         git add info/mitigations.txt
+        git add info/CASE_mapping.txt
         git commit -m "Update stats [skip ci]" || echo "No changes to commit"
         git push
       env:

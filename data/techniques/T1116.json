@@ -1,0 +1,16 @@
+{
+    "id": "T1116",
+    "name": "Determine connected devices",
+    "description": "Examine artefacts and extract indicators of devices that have been connected to the target device.",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples":  ["USB connected devices",
+                  "ADB connected hosts",
+                  "iOS Backups from a computer"
+                  ],
+    "weaknesses": ["W1183", "W1184", "W1011"],
+    "CASE_output_classes" : ["observable:Device", "observable:Computer", "observable:MobileDevice", "observable:SmartDevice", "observable:WearableDevice"],
+    "references": ["ALEAPP abd_hots.py, https://github.com/abrignoni/ALEAPP/blob/main/scripts/artifacts/adb_hosts.py"
+    ]
+}

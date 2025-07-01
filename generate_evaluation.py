@@ -74,7 +74,7 @@ def generate_evaluation(techniques=None, lab_config=None, output_file=None, labe
     # Check if there are labels provided for each technique (blank strings can be used to make up the numbers)
     if labels is not None:
         if len(labels) != len(techniques):
-            raise ValueError("Mismatched number of labels and techniques:\n>>> {}\n>>> {}".format(techniques, labels))
+            raise ValueError("Mismatched number of labels ({}) and techniques ({}):\n>>> {}\n>>> {}".format(len(labels), len(techniques), labels, techniques))
 
     # Load knowledge base
     kb = solveitcore.SOLVEIT('data', 'solve-it.json')

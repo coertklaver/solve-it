@@ -12,7 +12,7 @@ Extract Application-based Information	todo
 Examine data at the file-level	todo
 Locate Relevant Digital Artefacts	todo
 Establish Identities	todo
-Visualisation	todo
+Create Visualisation	todo
 Event Reconstruction	todo
 Research	todo
 Documentation	todo

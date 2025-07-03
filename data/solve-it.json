@@ -85,8 +85,8 @@
     "techniques": ["T1084", "T1085"]
     },
 
-    {"name":"Visualisation",
-    "description": "todo",
+    {"name":"Create Visualisation",
+    "description": "Display information as a visual representation to assist with analysis",
     "techniques": ["T1103", "T1115"]
     },
 

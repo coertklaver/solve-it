@@ -1,12 +1,12 @@
 {
     "id": "T1045",
     "name": "Decode standard archive format",
-    "description": "",
+    "description": "Extract files from a common archive format e.g. TAR, RAR, ZIP",
     "synonyms": [],
     "details": "",
     "subtechniques": [],
     "examples": [],
-    "weaknesses": [],
-    "CASE_output_classes" : [],
-    "references": ["todo"]
+    "weaknesses": ["W1185"],
+    "CASE_output_classes" : ["observable:File"],
+    "references": []
 }

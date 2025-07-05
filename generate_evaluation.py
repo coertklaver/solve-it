@@ -332,7 +332,7 @@ def generate_evaluation(techniques=None, lab_config=None, output_file=None, labe
             # Count cells with "Y" (mitigations implemented)
             main_worksheet.write_formula(start_pos + 1, 8 + max_mits + 0,
                                        '=COUNTIF(' + xl_col_to_name(8) + str(start_pos + 2) + ":" + xl_col_to_name(
-                                           8 + max_mits - 1) + str(start_pos + 2) + ',"Y")')
+                                           8 + max_mits - 1) + str(start_pos + 2) + ',"Y*")')
             
             # Count cells with "N" (mitigations not implemented)
             main_worksheet.write_formula(start_pos + 1, 8 + max_mits + 1,

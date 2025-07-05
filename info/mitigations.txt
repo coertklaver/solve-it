@@ -133,3 +133,4 @@ M1132	Use a Trusted Bootable Environment that supports decryption of the interna
 M1133	Acquire the encrypted contents of the internal disk and decrypt the copy within a virtualized environment
 M1134	Testing that connected devices are detected.
 M1135	Testing that correct metadata/status of connected devices is extracted
+M1138	Testing file name/path pattern matching engine

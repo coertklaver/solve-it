@@ -113,3 +113,4 @@ T1113	Access internal storage via bootable environment	Booting the suspected com
 T1114	Memory Acquisition via Cold Boot Attack	Extracting volatile memory (RAM) from a powered-off system by quickly rebooting or transferring the memory module to another system before residual data fades. Cooling the memory modules can significantly slow down data decay, preserving critical data such as encryption keys or passwords.	['Cold Boot Attack', 'Extracting RAM data using Cold Boot Attack']
 T1115	Visualisation of geolocation information	Presenting points or paths visually using extracted data, typically on a map	[]
 T1116	Determine connected devices	Examine artefacts and extract indicators of devices that have been connected to the target device.	[]
+T1118	Locate relevant files by path	Use the path of file name to determine potential relevance of artefact	[]

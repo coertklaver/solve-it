@@ -1,0 +1,13 @@
+{
+    "id": "T1118",
+    "name": "Locate relevant files by path",
+    "description": "Use the path of file name to determine potential relevance of artefact",
+    "synonyms": [],
+    "details": "",
+    "subtechniques": [],
+    "examples":  ["Autopsy Interesting Files module"
+                  ],
+    "weaknesses": ["W1186", "W1187", "W1188"],
+    "CASE_output_classes" : ["observable:File"],
+    "references": ["Autopsy Interesting File module, https://sleuthkit.org/autopsy/docs/user-docs/3.1/interesting_page.html"]
+}

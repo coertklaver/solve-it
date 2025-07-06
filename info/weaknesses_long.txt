@@ -183,3 +183,7 @@ W1181	Failure to decrypt internal disk using a bootable environment	X
 W1182	Bootable environment overwrites relevant data on the target device	X				X	
 W1183	Failure to identify the existence of a connected device	X					
 W1184	Presenting devices 'seen' as devices connected		X	X			X
+W1185	Failure to enumerate all files in a standard archive format	X					
+W1186	Missing files with file name/path-based pattern matching due to renaming	X					
+W1187	Failure to match file name/path pattern due to mismatch of search term used and pattern match engine.	X					
+W1188	Failure to match file name/path pattern due to implementation error in matching engine.	X					

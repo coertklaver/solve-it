@@ -83,8 +83,8 @@ T1083	Memory examination (OS-level)
 T1084	Extraction of user accounts	
 T1085	Identify conflation	
 T1086	Timeline analysis	
-T1087	Geospatial analysis	
-T1088	Connection analysis	
+T1087	Location-based event reconstruction	
+T1088	Connection-based event reconstruction	
 T1089	Source code review	
 T1090	Experimentation	
 T1091	Bookmarking	
@@ -113,4 +113,5 @@ T1113	Access internal storage via bootable environment
 T1114	Memory Acquisition via Cold Boot Attack	
 T1115	Visualisation of geolocation information	
 T1116	Determine connected devices	
+T1117	Time-based event reconstruction	
 T1118	Locate relevant files by path	

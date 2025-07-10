@@ -28,7 +28,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Generates stats  
       run: |
-        mkdir -p info
+        mkdir -p .repo_info
         python generate_stat_summary.py > .repo_info/stats.txt
         python generate_tsv_from_kb.py -o > .repo_info/objectives.txt
         python generate_tsv_from_kb.py -t > .repo_info/techniques.txt

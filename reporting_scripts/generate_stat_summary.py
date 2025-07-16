@@ -7,12 +7,24 @@ The script can be used directly from the command line
 
 """
 
-import solveitcore
+import sys
+import os
+import logging
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+
+from solve_it_library import KnowledgeBase
 import pprint
+
+# Configure logging to show errors to console
+logging.basicConfig(level=logging.ERROR, format='ERROR: %(message)s')
 
 def main():
     """Command-line entry point for the script."""
-    kb = solveitcore.SOLVEIT('data', 'solve-it.json')
+    # Calculate the path to the solve-it directory relative to this script
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    solve_it_root = os.path.dirname(script_dir)  # Go up from reporting_scripts to solve-it root
+    
+    kb = KnowledgeBase(solve_it_root, 'solve-it.json')
 
     output_json = {}
     output_json['num_objectives'] = len(kb.list_tactics())

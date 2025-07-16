@@ -26,11 +26,11 @@ Each of these concepts are contained in subfolders within the \data subfolder. E
 
 ## Viewing the knowledge base in a spreadsheet
 
-A utility script is provided, `generate_excel_from_kb.py`. This python3 script will generate an Excel spreadsheet (solve-it.xlsx) based on the current version of the json data (using the solve-it.json categorisations). This uses the Python xlsxwriter package. 
+A utility script is provided, `reporting_scripts/generate_excel_from_kb.py`. This python3 script will generate an Excel spreadsheet (solve-it.xlsx) based on the current version of the json data (using the solve-it.json categorisations). This uses the Python xlsxwriter package. 
 
 Pre-generated xlsx files can be found in the [releases](https://github.com/SOLVE-IT-DF/solve-it/releases) section.
 
-A another utility script `generate_evaluation.py` can be used with a list of technique IDs provided as command line arguments. This provides a repackaged checklist of the supplied technqiues, with their weaknesses and potential mitigations. This can be used to review a case, an SOP, a tool workflow, and more. See example in [SOLVE-IT examples repository](https://github.com/SOLVE-IT-DF/solve-it-examples/tree/main/forensic_workflow_example_forensic_imaging).
+A another utility script `reporting_scripts/generate_evaluation.py` can be used with a list of technique IDs provided as command line arguments. This provides a repackaged checklist of the supplied technqiues, with their weaknesses and potential mitigations. This can be used to review a case, an SOP, a tool workflow, and more. See example in [SOLVE-IT examples repository](https://github.com/SOLVE-IT-DF/solve-it-examples/tree/main/forensic_workflow_example_forensic_imaging).
 
 ## Organisation of the techniques
 The file `solve-it.json` is the default categorisation of the techniques, but other examples are provided in `carrier.json` and `dfrws.json`.
@@ -38,4 +38,4 @@ The file `solve-it.json` is the default categorisation of the techniques, but ot
 
 ## Contributing to the knowledge base
 
-Please see [CONTRIBUTING.md](CONTRIBUTING.md) for information. 
+Please see [CONTRIBUTING.md](CONTRIBUTING.md) for information.

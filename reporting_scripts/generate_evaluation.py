@@ -20,12 +20,14 @@ import sys
 import json
 import xlsxwriter
 import argparse
-import sys
 import logging
-import solveitcore
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+
+from solve_it_library import KnowledgeBase
 from xlsxwriter.utility import xl_col_to_name
 
-# logging.basicConfig(level=logging.DEBUG)
+# Configure logging to show info and errors to console
+logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
 def generate_evaluation(techniques=None, lab_config=None, output_file=None, labels=None):
     """Generate an evaluation spreadsheet for the specified techniques.
@@ -77,7 +79,11 @@ def generate_evaluation(techniques=None, lab_config=None, output_file=None, labe
             raise ValueError("Mismatched number of labels ({}) and techniques ({}):\n>>> {}\n>>> {}".format(len(labels), len(techniques), labels, techniques))
 
     # Load knowledge base
-    kb = solveitcore.SOLVEIT('data', 'solve-it.json')
+    # Calculate the path to the solve-it directory relative to this script
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    solve_it_root = os.path.dirname(script_dir)  # Go up from reporting_scripts to solve-it root
+    
+    kb = KnowledgeBase(solve_it_root, 'solve-it.json')
 
     # Load lab config if present
     lab_config_data = {}
@@ -277,13 +283,13 @@ def generate_evaluation(techniques=None, lab_config=None, output_file=None, labe
             main_worksheet.write_string(start_pos + 1, 1, "{}".format(weakness_info.get('name')))
             main_worksheet.write_string(start_pos + 1, 2, weakness_info.get('INCOMP', ''),
                                       cell_format=weakness_type_format)
-            main_worksheet.write_string(start_pos + 1, 3, weakness_info.get('INAC-EX', ''),
+            main_worksheet.write_string(start_pos + 1, 3, weakness_info.get('INAC_EX', ''),
                                       cell_format=weakness_type_format)
-            main_worksheet.write_string(start_pos + 1, 4, weakness_info.get('INAC-AS', ''),
+            main_worksheet.write_string(start_pos + 1, 4, weakness_info.get('INAC_AS', ''),
                                       cell_format=weakness_type_format)
-            main_worksheet.write_string(start_pos + 1, 5, weakness_info.get('INAC-ALT', ''),
+            main_worksheet.write_string(start_pos + 1, 5, weakness_info.get('INAC_ALT', ''),
                                       cell_format=weakness_type_format)
-            main_worksheet.write_string(start_pos + 1, 6, weakness_info.get('INAC-COR', ''),
+            main_worksheet.write_string(start_pos + 1, 6, weakness_info.get('INAC_COR', ''),
                                       cell_format=weakness_type_format)
             main_worksheet.write_string(start_pos + 1, 7, weakness_info.get('MISINT', ''),
                                       cell_format=weakness_type_format)

@@ -76,14 +76,18 @@ class KnowledgeBase:
         self.objective_mappings: Dict[str, List[Dict[str, Any]]] = {}
         self.current_mapping_name: Optional[str] = None
 
+        # Initialize reverse lookup indices for O(1) performance
+        self._weakness_to_techniques: Dict[str, List[str]] = {}
+        self._mitigation_to_weaknesses: Dict[str, List[str]] = {}
+        self._mitigation_to_techniques: Dict[str, List[str]] = {}
+
         # Load core data
         self._load_techniques()
         self._load_weaknesses()
         self._load_mitigations()
         
-        # Update usage references for compatibility with original solveitcore.py
-        self._update_weakness_usages()
-        self._update_mitigation_usages()
+        # Build reverse indices for performance optimization
+        self._build_reverse_indices()
 
         # Load the specified objective mapping
         if not self.load_objective_mapping(mapping_file):
@@ -179,6 +183,57 @@ class KnowledgeBase:
         """Loads mitigations from the mitigations directory."""
         self.mitigations = self._load_json_files(self.mitigations_path, Mitigation)
         logger.info("Loaded %d mitigations.", len(self.mitigations))
+
+    def _build_reverse_indices(self):
+        """
+        Pre-compute reverse relationship indices for O(1) lookups.
+        
+        Builds:
+        - weakness_id -> [technique_ids] that reference it
+        - mitigation_id -> [weakness_ids] that reference it  
+        - mitigation_id -> [technique_ids] that reference it (through weaknesses)
+        
+        This eliminates the need for O(n) iterations in relationship query methods.
+        """
+        logger.info("Building reverse indices for performance optimization...")
+        
+        # Initialize empty indices
+        self._weakness_to_techniques = {}
+        self._mitigation_to_weaknesses = {}
+        self._mitigation_to_techniques = {}
+        
+        # Build weakness -> techniques mapping
+        for technique_id, technique in self.techniques.items():
+            for weakness_id in technique.get('weaknesses', []):
+                if weakness_id not in self._weakness_to_techniques:
+                    self._weakness_to_techniques[weakness_id] = []
+                self._weakness_to_techniques[weakness_id].append(technique_id)
+        
+        # Build mitigation -> weaknesses mapping
+        for weakness_id, weakness in self.weaknesses.items():
+            for mitigation_id in weakness.get('mitigations', []):
+                if mitigation_id not in self._mitigation_to_weaknesses:
+                    self._mitigation_to_weaknesses[mitigation_id] = []
+                self._mitigation_to_weaknesses[mitigation_id].append(weakness_id)
+        
+        # Build mitigation -> techniques mapping (through weaknesses)
+        for mitigation_id, weakness_ids in self._mitigation_to_weaknesses.items():
+            technique_ids = set()  # Use set to avoid duplicates
+            for weakness_id in weakness_ids:
+                technique_ids.update(self._weakness_to_techniques.get(weakness_id, []))
+            self._mitigation_to_techniques[mitigation_id] = sorted(list(technique_ids))
+        
+        # Sort all reverse index lists for consistent output
+        for weakness_id in self._weakness_to_techniques:
+            self._weakness_to_techniques[weakness_id].sort()
+        
+        for mitigation_id in self._mitigation_to_weaknesses:
+            self._mitigation_to_weaknesses[mitigation_id].sort()
+        
+        logger.info("Reverse indices built: %d weakness->technique, %d mitigation->weakness, %d mitigation->technique",
+                    len(self._weakness_to_techniques), 
+                    len(self._mitigation_to_weaknesses),
+                    len(self._mitigation_to_techniques))
 
     def load_objective_mapping(self, mapping_filename: str) -> bool:
         """
@@ -441,9 +496,7 @@ class KnowledgeBase:
     def get_techniques_for_weakness(self, weakness_id: str) -> List[Dict[str, Any]]:
         """
         Retrieves all techniques associated with a specific weakness.
-
-        This method iterates through all techniques and checks their 'weaknesses' list
-        to find those that reference the specified weakness ID.
+        Uses pre-computed reverse index.
 
         Args:
             weakness_id (str): The ID of the weakness.
@@ -453,8 +506,6 @@ class KnowledgeBase:
                 the weakness. Returns an empty list if the weakness is not found or
                 no techniques reference it.
         """
-        associated_techniques = []
-
         # First check if the weakness exists
         if not self.get_weakness(weakness_id):
             logger.warning(
@@ -463,10 +514,17 @@ class KnowledgeBase:
             )
             return []
 
-        # Iterate through all techniques to find those referencing this weakness
-        for _, technique in self.techniques.items():
-            if weakness_id in technique.get('weaknesses', []):
+        # O(1) lookup using pre-computed reverse index
+        technique_ids = self._weakness_to_techniques.get(weakness_id, [])
+        
+        # Convert IDs to full technique objects
+        associated_techniques = []
+        for technique_id in technique_ids:
+            technique = self.get_technique(technique_id)
+            if technique:
                 associated_techniques.append(technique)
+            else:
+                logger.warning("Index inconsistency: technique %s not found", technique_id)
 
         if not associated_techniques:
             logger.debug("No techniques found that reference weakness %s.", weakness_id)
@@ -476,9 +534,7 @@ class KnowledgeBase:
     def get_weaknesses_for_mitigation(self, mitigation_id: str) -> List[Dict[str, Any]]:
         """
         Retrieves all weaknesses associated with a specific mitigation.
-
-        This method iterates through all weaknesses and checks their 'mitigations' list
-        to find those that reference the specified mitigation ID.
+        Uses pre-computed reverse index.
 
         Args:
             mitigation_id (str): The ID of the mitigation.
@@ -488,8 +544,6 @@ class KnowledgeBase:
                 the mitigation. Returns an empty list if the mitigation is not found or
                 no weaknesses reference it.
         """
-        associated_weaknesses = []
-
         # First check if the mitigation exists
         if not self.get_mitigation(mitigation_id):
             logger.warning(
@@ -498,10 +552,17 @@ class KnowledgeBase:
             )
             return []
 
-        # Iterate through all weaknesses to find those referencing this mitigation
-        for _, weakness in self.weaknesses.items():
-            if mitigation_id in weakness.get('mitigations', []):
+        # O(1) lookup using pre-computed reverse index
+        weakness_ids = self._mitigation_to_weaknesses.get(mitigation_id, [])
+        
+        # Convert IDs to full weakness objects
+        associated_weaknesses = []
+        for weakness_id in weakness_ids:
+            weakness = self.get_weakness(weakness_id)
+            if weakness:
                 associated_weaknesses.append(weakness)
+            else:
+                logger.warning("Index inconsistency: weakness %s not found", weakness_id)
 
         if not associated_weaknesses:
             logger.debug("No weaknesses found that reference mitigation %s.", mitigation_id)
@@ -870,43 +931,40 @@ class KnowledgeBase:
         """
         return sorted(self.mitigations.keys())
 
-    def _update_weakness_usages(self):
+    def get_techniques_for_mitigation(self, mitigation_id: str) -> List[Dict[str, Any]]:
         """
-        Adds a list of all techniques that reference each weakness.
-        
-        This replicates the behavior of the original solveitcore.py method
-        by adding an 'in_techniques' field to each weakness.
-        """
-        # Initialize in_techniques for all weaknesses
-        for weakness_id in self.weaknesses:
-            self.weaknesses[weakness_id]['in_techniques'] = []
-        
-        # Populate reverse references
-        for technique_id in self.techniques:
-            for weakness_id in self.techniques[technique_id].get('weaknesses', []):
-                if weakness_id in self.weaknesses:
-                    if technique_id not in self.weaknesses[weakness_id]['in_techniques']:
-                        self.weaknesses[weakness_id]['in_techniques'].append(technique_id)
+        Retrieves all techniques associated with a specific mitigation.
+        Uses pre-computed reverse index.
 
-    def _update_mitigation_usages(self):
+        Args:
+            mitigation_id (str): The ID of the mitigation.
+
+        Returns:
+            List[Dict[str, Any]]: A list of technique data dictionaries associated with
+                the mitigation. Returns an empty list if the mitigation is not found or
+                no techniques reference it.
         """
-        Adds lists of all techniques and weaknesses that reference each mitigation.
+        # First check if the mitigation exists
+        if not self.get_mitigation(mitigation_id):
+            logger.warning(
+                "Mitigation %s not found when searching for associated techniques.",
+                mitigation_id
+            )
+            return []
+
+        # O(1) lookup using pre-computed reverse index
+        technique_ids = self._mitigation_to_techniques.get(mitigation_id, [])
         
-        This replicates the behavior of the original solveitcore.py method
-        by adding 'in_techniques' and 'in_weaknesses' fields to each mitigation.
-        """
-        # Initialize fields for all mitigations
-        for mitigation_id in self.mitigations:
-            self.mitigations[mitigation_id]['in_techniques'] = []
-            self.mitigations[mitigation_id]['in_weaknesses'] = []
-        
-        # Populate reverse references
-        for technique_id in self.techniques:
-            for weakness_id in self.techniques[technique_id].get('weaknesses', []):
-                if weakness_id in self.weaknesses:
-                    for mitigation_id in self.weaknesses[weakness_id].get('mitigations', []):
-                        if mitigation_id in self.mitigations:
-                            if weakness_id not in self.mitigations[mitigation_id]['in_weaknesses']:
-                                self.mitigations[mitigation_id]['in_weaknesses'].append(weakness_id)
-                            if technique_id not in self.mitigations[mitigation_id]['in_techniques']:
-                                self.mitigations[mitigation_id]['in_techniques'].append(technique_id)
+        # Convert IDs to full technique objects
+        associated_techniques = []
+        for technique_id in technique_ids:
+            technique = self.get_technique(technique_id)
+            if technique:
+                associated_techniques.append(technique)
+            else:
+                logger.warning("Index inconsistency: technique %s not found", technique_id)
+
+        if not associated_techniques:
+            logger.debug("No techniques found that reference mitigation %s.", mitigation_id)
+
+        return associated_techniques

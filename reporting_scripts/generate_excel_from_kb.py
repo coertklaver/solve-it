@@ -94,7 +94,9 @@ if __name__ == '__main__':
         weaknesses_sheet.write_number(i+1, 2, len(kb.get_weakness(each_weakness).get('mitigations', [])))
         if len(kb.get_weakness(each_weakness).get('mitigations', [])) == 0:
             weaknesses_sheet.write_string(i+1, 3, "x")
-        weaknesses_sheet.write_string(i + 1, 4, str(kb.get_weakness(each_weakness).get('in_techniques')))
+        techniques_for_weakness = kb.get_techniques_for_weakness(each_weakness)
+        technique_ids = [t['id'] for t in techniques_for_weakness]
+        weaknesses_sheet.write_string(i + 1, 4, str(technique_ids))
 
         if kb.get_weakness(each_weakness).get('INCOMP') in ['x', 'X']:
             weaknesses_sheet.write_string(i + 1, 5, 'X')
@@ -127,9 +129,14 @@ if __name__ == '__main__':
     for i, each_mitigation in enumerate(sorted(kb.list_mitigations())):
         mitigations_sheet.write_string(i+1, 0, each_mitigation)
         mitigations_sheet.write_string(i+1, 1, kb.get_mitigation(each_mitigation).get('name'))
-        mitigations_sheet.write_string(i+1, 2, str(kb.get_mitigation(each_mitigation).get('in_techniques')))
-        mitigations_sheet.write_string(i+1, 3, str(kb.get_mitigation(each_mitigation).get('in_weaknesses')))
-        mitigations_sheet.write_number(i + 1, 4, len(kb.get_mitigation(each_mitigation).get('in_weaknesses')))
+        techniques_for_mitigation = kb.get_techniques_for_mitigation(each_mitigation)
+        technique_ids = [t['id'] for t in techniques_for_mitigation]
+        mitigations_sheet.write_string(i+1, 2, str(technique_ids))
+        
+        weaknesses_for_mitigation = kb.get_weaknesses_for_mitigation(each_mitigation)
+        weakness_ids = [w['id'] for w in weaknesses_for_mitigation]
+        mitigations_sheet.write_string(i+1, 3, str(weakness_ids))
+        mitigations_sheet.write_number(i + 1, 4, len(weakness_ids))
 
     # write some headers for weakness sheet
     mitigations_sheet.write_string(0, 0, "ID")

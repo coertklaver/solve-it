@@ -1,5 +1,5 @@
 """
-SOLVE-IT Knowledge Base Library (`solveit_kb`)
+SOLVE-IT Knowledge Base Library (`solve_it_library`)
 
 This package provides programmatic access to the SOLVE-IT knowledge base data.
 """

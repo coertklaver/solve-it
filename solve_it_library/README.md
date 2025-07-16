@@ -1,6 +1,6 @@
 # SOLVE-IT Knowledge Base Library (`solve_it_library`)
 
-A Python library providing a comprehensive interface for loading, parsing, and querying the SOLVE-IT knowledge base data stored in JSON files. This library replaces `solveitcore.py` while maintaining backward compatibility.
+A Python library providing a comprehensive interface for loading, parsing, and querying the SOLVE-IT knowledge base data stored in JSON files.
 
 > **Data Directory Requirement:**   
 > This library requires the data folder from the SOLVE-IT repository from [https://github.com/SOLVE-IT-DF/solve-it](https://github.com/SOLVE-IT-DF/solve-it).
@@ -10,15 +10,12 @@ A Python library providing a comprehensive interface for loading, parsing, and q
 ## Key Features
 
 ### **Core Functionality**
-- **Simple Search**: Keyword/phrase search with AND/OR logic, substring matching, and relevance scoring
-- **Data Validation**: Pydantic models ensure data integrity with error handling
-- **Relationship Queries**: Forward and reverse relationship lookups between techniques, weaknesses, and mitigations
-- **Multiple Mappings**: Support for different objective mappings (`solve-it.json`, `carrier.json`, `dfrws.json`)
-- **Type Safety**: Type hints throughout for better IDE support and error prevention
 
-### **Backward Compatibility**
-- **Previous API Support**: Can be used to replace `solveitcore.py` with minimal changes.
-- **Identical Method Signatures**: All original methods preserved with identical behavior
+- **Simple Search**: Keyword/phrase search with AND/OR logic, substring matching, and simplistic relevance scoring
+- **Data Validation**: Pydantic models ensure data integrity with error handling
+- **Pre-computed Reverse Lookups**: Pre-computed reverse indices enable lookups between techniques, weaknesses, and mitigations
+- **Multiple Mappings**: Support for different objective mappings (`solve-it.json`, `carrier.json`, `dfrws.json`)
+- **Type Safety**: Type hints throughout for IDE support and error prevention
 
 ## Data Models
 
@@ -74,9 +71,12 @@ techniques = kb.get_techniques_for_weakness("W1001")
 
 # Get weaknesses that reference a specific mitigation
 weaknesses = kb.get_weaknesses_for_mitigation("M1001")
+
+# Get techniques that reference a specific mitigation
+techniques = kb.get_techniques_for_mitigation("M1001")
 ```
 
-### **Advanced Search**
+### **Search**
 ```python
 # Basic keyword search
 results = kb.search("network forensics")
@@ -137,7 +137,7 @@ mitigations = kb.get_all_mitigations_with_full_detail()
 
 ## Backward Compatibility API
 
-For users migrating from `solveitcore.py`, all original methods are preserved:
+For users migrating from `solveitcore.py`, original methods are preserved:
 
 ```python
 # Previous API methods (100% compatible)
@@ -177,7 +177,7 @@ try:
         mitigations = kb.get_mitigations_for_weakness(weakness['id'])
         print(f"    Mitigations: {[m['id'] for m in mitigations]}")
     
-    # === Advanced Search ===
+    # === Search ===
     
     # Search for network-related techniques
     results = kb.search("network forensics", item_types=["techniques"])
@@ -288,8 +288,14 @@ kb = KnowledgeBase('/path/to/solve-it-repo')
 
 ## Performance Considerations
 
+### **Optimized Relationship Queries**
+- **Reverse relationship queries** (`get_techniques_for_weakness`, `get_weaknesses_for_mitigation`, `get_techniques_for_mitigation`) use pre-computed indices
+- **Index building** occurs once during initialization
+- **Memory overhead** for indices is minimal (~<1MB) compared to performance gains
+
+### **General Performance**
 - **Bulk retrieval methods** with "full detail" may return large amounts of data
-- **Search operations** are optimized but may take longer on large datasets
+- **Search operations** are optimized with method decomposition for maintainability while preserving performance
 - **Data loading** happens once at initialization for optimal query performance
 - **Memory usage** scales with knowledge base size (typically minimal)
 

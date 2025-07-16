@@ -76,7 +76,7 @@ class KnowledgeBase:
         self.objective_mappings: Dict[str, List[Dict[str, Any]]] = {}
         self.current_mapping_name: Optional[str] = None
 
-        # Initialize reverse lookup indices for O(1) performance
+        # Initialize reverse lookup indices
         self._weakness_to_techniques: Dict[str, List[str]] = {}
         self._mitigation_to_weaknesses: Dict[str, List[str]] = {}
         self._mitigation_to_techniques: Dict[str, List[str]] = {}
@@ -186,14 +186,12 @@ class KnowledgeBase:
 
     def _build_reverse_indices(self):
         """
-        Pre-compute reverse relationship indices for O(1) lookups.
+        Pre-compute reverse relationship indices.
         
         Builds:
         - weakness_id -> [technique_ids] that reference it
         - mitigation_id -> [weakness_ids] that reference it  
         - mitigation_id -> [technique_ids] that reference it (through weaknesses)
-        
-        This eliminates the need for O(n) iterations in relationship query methods.
         """
         logger.info("Building reverse indices for performance optimization...")
         
@@ -514,7 +512,7 @@ class KnowledgeBase:
             )
             return []
 
-        # O(1) lookup using pre-computed reverse index
+        # Lookup using pre-computed reverse index
         technique_ids = self._weakness_to_techniques.get(weakness_id, [])
         
         # Convert IDs to full technique objects
@@ -552,7 +550,7 @@ class KnowledgeBase:
             )
             return []
 
-        # O(1) lookup using pre-computed reverse index
+        # Lookup using pre-computed reverse index
         weakness_ids = self._mitigation_to_weaknesses.get(mitigation_id, [])
         
         # Convert IDs to full weakness objects
@@ -1072,7 +1070,7 @@ class KnowledgeBase:
             )
             return []
 
-        # O(1) lookup using pre-computed reverse index
+        # Lookup using pre-computed reverse index
         technique_ids = self._mitigation_to_techniques.get(mitigation_id, [])
         
         # Convert IDs to full technique objects

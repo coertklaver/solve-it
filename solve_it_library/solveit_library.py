@@ -660,21 +660,59 @@ class KnowledgeBase:
         Raises:
             ValueError: If search_logic is not 'AND' or 'OR'.
         """
-        import re
-        
-        # Validate search_logic parameter
-        search_logic = search_logic.upper()
-        if search_logic not in ["AND", "OR"]:
-            raise ValueError("search_logic must be 'AND' or 'OR'")
+        # Validate search parameters
+        self._validate_search_parameters(search_logic)
         
         # Initialize result dictionary
-        results = {
+        results = self._initialize_search_results()
+
+        # Determine which collections to search
+        collections_to_search = self._determine_search_collections(item_types)
+
+        # Parse search terms (handle quoted phrases)
+        search_terms, phrases = self._parse_search_query(keywords)
+        if not search_terms and not phrases:
+            return results
+
+        # Search each collection and sort results
+        return self._search_collections(collections_to_search, search_terms, phrases, substring_match, search_logic, results)
+
+    def _validate_search_parameters(self, search_logic: str) -> None:
+        """
+        Validate search parameters and raise appropriate errors.
+        
+        Args:
+            search_logic (str): Search logic to validate
+            
+        Raises:
+            ValueError: If search_logic is not 'AND' or 'OR'
+        """
+        if search_logic.upper() not in ["AND", "OR"]:
+            raise ValueError("search_logic must be 'AND' or 'OR'")
+
+    def _initialize_search_results(self) -> Dict[str, List[Dict[str, Any]]]:
+        """
+        Initialize empty search results dictionary.
+        
+        Returns:
+            Dict[str, List[Dict[str, Any]]]: Empty results dictionary
+        """
+        return {
             "techniques": [],
             "weaknesses": [],
             "mitigations": []
         }
 
-        # Determine which collections to search
+    def _determine_search_collections(self, item_types: Optional[List[str]]) -> Dict[str, Dict[str, Dict[str, Any]]]:
+        """
+        Determine which collections to search based on item_types parameter.
+        
+        Args:
+            item_types (Optional[List[str]]): Types of items to search
+            
+        Returns:
+            Dict[str, Dict[str, Dict[str, Any]]]: Dictionary mapping collection names to collections
+        """
         collections_to_search = {}
         if item_types is None or "techniques" in item_types:
             collections_to_search["techniques"] = self.techniques
@@ -682,13 +720,31 @@ class KnowledgeBase:
             collections_to_search["weaknesses"] = self.weaknesses
         if item_types is None or "mitigations" in item_types:
             collections_to_search["mitigations"] = self.mitigations
+        return collections_to_search
 
-        # Parse search terms (handle quoted phrases)
-        search_terms, phrases = self._parse_search_query(keywords)
-        if not search_terms and not phrases:
-            return results
-
-        # Search each collection
+    def _search_collections(self, 
+                          collections_to_search: Dict[str, Dict[str, Dict[str, Any]]], 
+                          search_terms: List[str], 
+                          phrases: List[str], 
+                          substring_match: bool, 
+                          search_logic: str, 
+                          results: Dict[str, List[Dict[str, Any]]]) -> Dict[str, List[Dict[str, Any]]]:
+        """
+        Search each collection and sort results by relevance.
+        
+        Args:
+            collections_to_search: Dictionary of collections to search
+            search_terms: List of individual search terms
+            phrases: List of quoted phrases
+            substring_match: Whether to use substring matching
+            search_logic: Search logic ('AND' or 'OR')
+            results: Results dictionary to populate
+            
+        Returns:
+            Dict[str, List[Dict[str, Any]]]: Search results sorted by relevance
+        """
+        search_logic = search_logic.upper()
+        
         for collection_name, collection in collections_to_search.items():
             scored_results = []
             
@@ -698,10 +754,22 @@ class KnowledgeBase:
                     scored_results.append((item, score))
             
             # Sort by score (highest first) and extract items
-            scored_results.sort(key=lambda x: x[1], reverse=True)
-            results[collection_name] = [item for item, _ in scored_results]
+            results[collection_name] = self._sort_search_results(scored_results)
 
         return results
+
+    def _sort_search_results(self, scored_results: List[Tuple[Dict[str, Any], int]]) -> List[Dict[str, Any]]:
+        """
+        Sort search results by relevance score.
+        
+        Args:
+            scored_results: List of tuples containing (item, score)
+            
+        Returns:
+            List[Dict[str, Any]]: Sorted list of items (highest score first)
+        """
+        scored_results.sort(key=lambda x: x[1], reverse=True)
+        return [item for item, _ in scored_results]
 
     def _parse_search_query(self, keywords: str) -> Tuple[List[str], List[str]]:
         """
@@ -758,25 +826,44 @@ class KnowledgeBase:
         Returns:
             int: Relevance score (0 = no match)
         """
-        import re
-        
+        # Extract and normalize text fields
         name = str(item.get("name", "")).lower()
         description = str(item.get("description", "")).lower()
-        combined_text = f"{name} {description}"
         
-        # Track which terms/phrases are found
+        # Find all term and phrase matches
+        match_results = self._find_term_matches(name, description, terms, phrases, substring_match)
+        
+        # Apply search logic filtering
+        if not self._apply_search_logic(match_results, terms, phrases, search_logic):
+            return 0
+        
+        # Calculate final score
+        return self._calculate_final_score(match_results, terms, phrases, search_logic)
+
+    def _find_term_matches(self, name: str, description: str, terms: List[str], phrases: List[str], substring_match: bool) -> Dict[str, Any]:
+        """
+        Find which terms and phrases match in name and description fields.
+        
+        Args:
+            name: Normalized name text
+            description: Normalized description text
+            terms: List of search terms
+            phrases: List of quoted phrases
+            substring_match: Whether to use substring matching
+            
+        Returns:
+            Dict[str, Any]: Dictionary containing match results
+        """
+        import re
+        
         found_terms = set()
         found_phrases = set()
-        
         name_matches = 0
         desc_matches = 0
         
-        # Check individual terms (word boundary or substring matching)
+        # Check individual terms
         for term in terms:
-            if substring_match:
-                pattern = re.escape(term)  # Simple substring matching
-            else:
-                pattern = r'\b' + re.escape(term) + r'\b'  # Word boundary matching
+            pattern = re.escape(term) if substring_match else r'\b' + re.escape(term) + r'\b'
             
             found_in_name = bool(re.search(pattern, name))
             found_in_desc = bool(re.search(pattern, description))
@@ -789,13 +876,10 @@ class KnowledgeBase:
             if found_in_desc:
                 desc_matches += 1
         
-        # Check phrases (exact phrase matching)
+        # Check phrases (worth more points)
         for phrase in phrases:
             escaped_phrase = re.escape(phrase)
-            if substring_match:
-                pattern = escaped_phrase  # Simple substring matching for phrases
-            else:
-                pattern = r'\b' + escaped_phrase + r'\b'  # Word boundary matching for phrases
+            pattern = escaped_phrase if substring_match else r'\b' + escaped_phrase + r'\b'
             
             found_in_name = bool(re.search(pattern, name))
             found_in_desc = bool(re.search(pattern, description))
@@ -808,30 +892,66 @@ class KnowledgeBase:
             if found_in_desc:
                 desc_matches += 2
         
-        # Apply search logic (AND/OR)
+        return {
+            'found_terms': found_terms,
+            'found_phrases': found_phrases,
+            'name_matches': name_matches,
+            'desc_matches': desc_matches
+        }
+
+    def _apply_search_logic(self, match_results: Dict[str, Any], terms: List[str], phrases: List[str], search_logic: str) -> bool:
+        """
+        Apply search logic (AND/OR) to determine if item should be included.
+        
+        Args:
+            match_results: Dictionary containing match results
+            terms: List of search terms
+            phrases: List of quoted phrases
+            search_logic: 'AND' or 'OR'
+            
+        Returns:
+            bool: True if item passes search logic, False otherwise
+        """
         total_search_items = len(terms) + len(phrases)
-        total_found = len(found_terms) + len(found_phrases)
+        total_found = len(match_results['found_terms']) + len(match_results['found_phrases'])
         
         if search_logic == "AND":
             # Must match ALL terms/phrases
-            if total_found < total_search_items:
-                return 0  # Not all terms/phrases found
-        elif search_logic == "OR":
+            return total_found >= total_search_items
+        else:  # OR logic
             # Must match AT LEAST ONE term/phrase
-            if total_found == 0:
-                return 0  # No terms/phrases found
+            return total_found > 0
+
+    def _calculate_final_score(self, match_results: Dict[str, Any], terms: List[str], phrases: List[str], search_logic: str) -> int:
+        """
+        Calculate final weighted score based on match results.
+        
+        Args:
+            match_results: Dictionary containing match results
+            terms: List of search terms
+            phrases: List of quoted phrases
+            search_logic: 'AND' or 'OR'
+            
+        Returns:
+            int: Final relevance score
+        """
+        name_matches = match_results['name_matches']
+        desc_matches = match_results['desc_matches']
         
         # Calculate base score based on where matches were found
-        base_score = 0
         if name_matches > 0 and desc_matches > 0:
             base_score = 100 + name_matches + desc_matches
         elif name_matches > 0:
             base_score = 50 + name_matches
         elif desc_matches > 0:
             base_score = 10 + desc_matches
+        else:
+            base_score = 0
         
-        # For OR logic, apply a multiplier based on match percentage
-        if search_logic == "OR" and total_search_items > 1:
+        # For OR logic, apply multiplier based on match percentage
+        if search_logic == "OR" and len(terms) + len(phrases) > 1:
+            total_search_items = len(terms) + len(phrases)
+            total_found = len(match_results['found_terms']) + len(match_results['found_phrases'])
             match_percentage = total_found / total_search_items
             # Scale score: 100% match gets full score, partial matches get reduced score
             # But ensure at least some score for any match

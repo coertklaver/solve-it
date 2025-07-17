@@ -29,14 +29,14 @@ jobs:
     - name: Generates stats  
       run: |
         mkdir -p .repo_info
-        python generate_stat_summary.py > .repo_info/stats.txt
-        python generate_tsv_from_kb.py -o > .repo_info/objectives.txt
-        python generate_tsv_from_kb.py -t > .repo_info/techniques.txt
-        python generate_tsv_from_kb.py -t -l > .repo_info/techniques_long.txt
-        python generate_tsv_from_kb.py -w > .repo_info/weaknesses.txt
-        python generate_tsv_from_kb.py -w -l > .repo_info/weaknesses_long.txt
-        python generate_tsv_from_kb.py -m > .repo_info/mitigations.txt
-        python generate_tsv_from_kb.py -c > .repo_info/CASE_mapping.txt
+        python reporting_scripts/generate_stat_summary.py > .repo_info/stats.txt
+        python reporting_scripts/generate_tsv_from_kb.py -o > .repo_info/objectives.txt
+        python reporting_scripts/generate_tsv_from_kb.py -t > .repo_info/techniques.txt
+        python reporting_scripts/generate_tsv_from_kb.py -t -l > .repo_info/techniques_long.txt
+        python reporting_scripts/generate_tsv_from_kb.py -w > .repo_info/weaknesses.txt
+        python reporting_scripts/generate_tsv_from_kb.py -w -l > .repo_info/weaknesses_long.txt
+        python reporting_scripts/generate_tsv_from_kb.py -m > .repo_info/mitigations.txt
+        python reporting_scripts/generate_tsv_from_kb.py -c > .repo_info/CASE_mapping.txt
     - name: Commit and push changes
       run: |
         git config --global user.name "github-actions[bot]"

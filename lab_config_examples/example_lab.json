@@ -1,5 +1,5 @@
 {
-  "Lab config notes": "This is a demo to be used with: `generate_evaluation.py T1063 T1072 T1072 --lab_config lab_config_examples/example_lab.json --labels \"\" \"WhatsApp Examination\" \"Telegram Examination\"'",
+  "Lab config notes": "This is a demo to be used with: `generate_evaluation.py T1063 T1072 T1072 --lab_config ../lab_config_examples/example_lab.json --labels \"\" \"WhatsApp Examination\" \"Telegram Examination\"'",
   "T1072:Chat app examination:WhatsApp Examination": {
     "W1085": {
       "M1054": {

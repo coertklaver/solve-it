@@ -10,7 +10,15 @@ The script can be used directly from the command line
 
 import re
 import argparse
-import solveitcore
+import sys
+import os
+import logging
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+
+from solve_it_library import KnowledgeBase
+
+# Configure logging to show errors to console
+logging.basicConfig(level=logging.ERROR, format='ERROR: %(message)s')
 
 def print_objectives(kb, long):
     """Prints the SOLVE-IT objectives to stdout"""
@@ -58,9 +66,9 @@ def print_weaknesses(kb, long):
         # Print long or short details for each weakness
         if long is True:
             print("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}".format(each_weakness,
-                                                      w.get('name'), w.get('INCOMP'), w.get('INAC-EX'),
-                                                      w.get('INAC-AS'), w.get('INAC-ALT'),
-                                                      w.get('INAC-COR'), w.get('MISINT')
+                                                      w.get('name'), w.get('INCOMP'), w.get('INAC_EX'),
+                                                      w.get('INAC_AS'), w.get('INAC_ALT'),
+                                                      w.get('INAC_COR'), w.get('MISINT')
                                                       ))
         else:
             print("{}\t{}".format(each_weakness,
@@ -68,10 +76,24 @@ def print_weaknesses(kb, long):
 
 def print_mitigations(kb, long):
     """Prints the SOLVE-IT mitigations to stdout"""
-    print('ID\tName')
+    if long is True:
+        print('ID\tName\tTechnique')
+    else:
+        print('ID\tName')
+    
     for each_mitigation in kb.list_mitigations():
         m = kb.get_mitigation(each_mitigation)
-        print("{}\t{}".format(each_mitigation, m.get('name')))
+        mitigation_name = m.get('name')
+        
+        # Add technique ID in parentheses if it exists (matching Excel behavior)
+        if m.get('technique'):
+            mitigation_name = f"{mitigation_name} ({m.get('technique')})"
+        
+        if long is True:
+            technique_id = m.get('technique') or ''
+            print("{}\t{}\t{}".format(each_mitigation, m.get('name'), technique_id))
+        else:
+            print("{}\t{}".format(each_mitigation, mitigation_name))
 
 
 def print_case_mapping(kb, long):
@@ -99,7 +121,11 @@ def main():
 
     args = parser.parse_args()
 
-    kb = solveitcore.SOLVEIT('data', 'solve-it.json')
+    # Calculate the path to the solve-it directory relative to this script
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    solve_it_root = os.path.dirname(script_dir)  # Go up from reporting_scripts to solve-it root
+    
+    kb = KnowledgeBase(solve_it_root, 'solve-it.json')
 
     if args.objectives is True:
         print_objectives(kb, args.long)
@@ -116,4 +142,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

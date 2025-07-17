@@ -1,6 +1,13 @@
 import os
 import xlsxwriter
-import solveitcore
+import sys
+import logging
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+
+from solve_it_library import KnowledgeBase
+
+# Configure logging to show info and errors to console
+logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
 def format_headings_in_workbook(workbook, tactics):
     header_format = workbook.add_format()
@@ -33,7 +40,11 @@ if __name__ == '__main__':
     # Replace technique organisation configuration file here if needed
     config_file = 'solve-it.json'
 
-    kb = solveitcore.SOLVEIT('data', config_file)
+    # Calculate the path to the solve-it directory relative to this script
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    solve_it_root = os.path.dirname(script_dir)  # Go up from reporting_scripts to solve-it root
+    
+    kb = KnowledgeBase(solve_it_root, config_file)
 
     print("Using configuration file: {}".format(config_file))
 
@@ -83,17 +94,19 @@ if __name__ == '__main__':
         weaknesses_sheet.write_number(i+1, 2, len(kb.get_weakness(each_weakness).get('mitigations', [])))
         if len(kb.get_weakness(each_weakness).get('mitigations', [])) == 0:
             weaknesses_sheet.write_string(i+1, 3, "x")
-        weaknesses_sheet.write_string(i + 1, 4, str(kb.get_weakness(each_weakness).get('in_techniques')))
+        techniques_for_weakness = kb.get_techniques_for_weakness(each_weakness)
+        technique_ids = [t['id'] for t in techniques_for_weakness]
+        weaknesses_sheet.write_string(i + 1, 4, str(technique_ids))
 
         if kb.get_weakness(each_weakness).get('INCOMP') in ['x', 'X']:
             weaknesses_sheet.write_string(i + 1, 5, 'X')
-        if kb.get_weakness(each_weakness).get('INAC-EX') in ['x', 'X']:
+        if kb.get_weakness(each_weakness).get('INAC_EX') in ['x', 'X']:
             weaknesses_sheet.write_string(i + 1, 6, 'X')
-        if kb.get_weakness(each_weakness).get('INAC-ALT') in ['x', 'X']:
+        if kb.get_weakness(each_weakness).get('INAC_ALT') in ['x', 'X']:
             weaknesses_sheet.write_string(i + 1, 7, 'X')
-        if kb.get_weakness(each_weakness).get('INAC-AS') in ['x', 'X']:
+        if kb.get_weakness(each_weakness).get('INAC_AS') in ['x', 'X']:
             weaknesses_sheet.write_string(i + 1, 8, 'X')
-        if kb.get_weakness(each_weakness).get('INAC-COR') in ['x', 'X']:
+        if kb.get_weakness(each_weakness).get('INAC_COR') in ['x', 'X']:
             weaknesses_sheet.write_string(i + 1, 9, 'X')
         if kb.get_weakness(each_weakness).get('MISINT') in ['x', 'X']:
             weaknesses_sheet.write_string(i + 1, 10, 'X')
@@ -116,9 +129,14 @@ if __name__ == '__main__':
     for i, each_mitigation in enumerate(sorted(kb.list_mitigations())):
         mitigations_sheet.write_string(i+1, 0, each_mitigation)
         mitigations_sheet.write_string(i+1, 1, kb.get_mitigation(each_mitigation).get('name'))
-        mitigations_sheet.write_string(i+1, 2, str(kb.get_mitigation(each_mitigation).get('in_techniques')))
-        mitigations_sheet.write_string(i+1, 3, str(kb.get_mitigation(each_mitigation).get('in_weaknesses')))
-        mitigations_sheet.write_number(i + 1, 4, len(kb.get_mitigation(each_mitigation).get('in_weaknesses')))
+        techniques_for_mitigation = kb.get_techniques_for_mitigation(each_mitigation)
+        technique_ids = [t['id'] for t in techniques_for_mitigation]
+        mitigations_sheet.write_string(i+1, 2, str(technique_ids))
+        
+        weaknesses_for_mitigation = kb.get_weaknesses_for_mitigation(each_mitigation)
+        weakness_ids = [w['id'] for w in weaknesses_for_mitigation]
+        mitigations_sheet.write_string(i+1, 3, str(weakness_ids))
+        mitigations_sheet.write_number(i + 1, 4, len(weakness_ids))
 
     # write some headers for weakness sheet
     mitigations_sheet.write_string(0, 0, "ID")
@@ -236,20 +254,25 @@ if __name__ == '__main__':
         worksheet.write_string(2, 1, str(parent_tactics))
 
         worksheet.write_string(3, 0, 'Description: ', bold_format)
-        worksheet.write_string(3, 1, kb.get_technique(each_technique_id).get('description'), cell_format=technique_format)
+        description = kb.get_technique(each_technique_id).get('description') or ''
+        worksheet.write_string(3, 1, description, cell_format=technique_format)
         worksheet.write_string(4, 0, 'Synonyms: ', bold_format)
-        worksheet.write_string(4, 1,  str(kb.get_technique(each_technique_id).get('synonyms')))
+        synonyms = kb.get_technique(each_technique_id).get('synonyms') or []
+        worksheet.write_string(4, 1, str(synonyms))
         worksheet.write_string(5, 0, 'Details: ', bold_format)
-        worksheet.write_string(5, 1, kb.get_technique(each_technique_id).get('details'), cell_format=technique_format)
+        details = kb.get_technique(each_technique_id).get('details') or ''
+        worksheet.write_string(5, 1, details, cell_format=technique_format)
         worksheet.write_string(6, 0, 'Subtechniques: ', bold_format)
-        worksheet.write_string(6, 1,  str(kb.get_technique(each_technique_id).get('subtechniques')))
+        subtechniques = kb.get_technique(each_technique_id).get('subtechniques') or []
+        worksheet.write_string(6, 1, str(subtechniques))
 
         worksheet.write_string(7, 0, 'CASE output entities: ', bold_format)
-        worksheet.write_string(7, 1,  str(kb.get_technique(each_technique_id).get('CASE_output_classes')))
+        case_output = kb.get_technique(each_technique_id).get('CASE_output_classes') or []
+        worksheet.write_string(7, 1, str(case_output))
 
         worksheet.write_string(8, 0, 'Examples: ', bold_format)
-        worksheet.write_string(8, 1, str(kb.get_technique(each_technique_id).get('examples')),
-                               cell_format=technique_format) #TODO format properly
+        examples = kb.get_technique(each_technique_id).get('examples') or []
+        worksheet.write_string(8, 1, str(examples), cell_format=technique_format)
 
         worksheet.write_string(10, 0, 'Potential weaknesses:', bold_format)
 
@@ -273,10 +296,10 @@ if __name__ == '__main__':
                 worksheet.write_string(err_list_start_row + i, 0, each_weakness)   # write ID
                 worksheet.write_string(err_list_start_row + i, 1, weakness_info.get('name'), cell_format=technique_format)
                 worksheet.write_string(err_list_start_row + i, 2, weakness_info.get('INCOMP', ''), cell_format=weakness_type_format)
-                worksheet.write_string(err_list_start_row + i, 3, weakness_info.get('INAC-EX', ''), cell_format=weakness_type_format)
-                worksheet.write_string(err_list_start_row + i, 4, weakness_info.get('INAC-AS', ''), cell_format=weakness_type_format)
-                worksheet.write_string(err_list_start_row + i, 5, weakness_info.get('INAC-ALT', ''), cell_format=weakness_type_format)
-                worksheet.write_string(err_list_start_row + i, 6, weakness_info.get('INAC-COR', ''), cell_format=weakness_type_format)
+                worksheet.write_string(err_list_start_row + i, 3, weakness_info.get('INAC_EX', ''), cell_format=weakness_type_format)
+                worksheet.write_string(err_list_start_row + i, 4, weakness_info.get('INAC_AS', ''), cell_format=weakness_type_format)
+                worksheet.write_string(err_list_start_row + i, 5, weakness_info.get('INAC_ALT', ''), cell_format=weakness_type_format)
+                worksheet.write_string(err_list_start_row + i, 6, weakness_info.get('INAC_COR', ''), cell_format=weakness_type_format)
                 worksheet.write_string(err_list_start_row + i, 7, weakness_info.get('MISINT', ''), cell_format=weakness_type_format)
             except AttributeError:
                 print('attribute error with {} in {}'.format(each_weakness, each_technique_id))
@@ -326,7 +349,8 @@ if __name__ == '__main__':
         # build big refs dict:
         references = {}
         # References from Technique
-        for each_reference in kb.get_technique(each_technique_id).get('references'):
+        technique_refs = kb.get_technique(each_technique_id).get('references') or []
+        for each_reference in technique_refs:
             if each_reference in references:
                 if each_technique_id not in references[each_reference]:
                     references[each_reference].append(each_technique_id)
@@ -334,26 +358,26 @@ if __name__ == '__main__':
                 references[each_reference] = [each_technique_id,]
 
         # References from weaknesses within technique
-        technique_weaknesses = kb.get_technique(each_technique_id).get('weaknesses')
+        technique_weaknesses = kb.get_technique(each_technique_id).get('weaknesses', [])
         for each_weakness_id in technique_weaknesses:
-            if kb.get_weakness(each_weakness_id).get('references') is not None:
-                for each_reference in kb.get_weakness(each_weakness_id).get('references'):
-                    if each_reference in references:
-                        if each_weakness_id not in references[each_reference]:
-                            references[each_reference].append(each_weakness_id)
-                    else:
-                        references[each_reference] = [each_weakness_id, ]
+            weakness_refs = kb.get_weakness(each_weakness_id).get('references') or []
+            for each_reference in weakness_refs:
+                if each_reference in references:
+                    if each_weakness_id not in references[each_reference]:
+                        references[each_reference].append(each_weakness_id)
+                else:
+                    references[each_reference] = [each_weakness_id, ]
 
         # References from mitigations within technique
         tech_mits = mits_written
         for each_mit_id in tech_mits:
-            if kb.get_mitigation(each_mit_id).get('references') is not None:
-                for each_reference in kb.get_mitigation(each_mit_id).get('references'):
-                    if each_reference in references:
-                        if each_mit_id not in references[each_reference]:
-                            references[each_reference].append(each_mit_id)
-                    else:
-                        references[each_reference] = [each_mit_id,]
+            mitigation_refs = kb.get_mitigation(each_mit_id).get('references') or []
+            for each_reference in mitigation_refs:
+                if each_reference in references:
+                    if each_mit_id not in references[each_reference]:
+                        references[each_reference].append(each_mit_id)
+                else:
+                    references[each_reference] = [each_mit_id,]
 
 
         # write the header
@@ -371,8 +395,3 @@ if __name__ == '__main__':
     print("- all individual techniques worksheets updated")
 
     workbook.close()
-
-
-
-
-

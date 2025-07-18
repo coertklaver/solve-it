@@ -26,7 +26,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Generates stats  
+    - name: Generates repo info  
       run: |
         mkdir -p .repo_info
         python reporting_scripts/generate_stat_summary.py > .repo_info/stats.txt
@@ -37,6 +37,7 @@ jobs:
         python reporting_scripts/generate_tsv_from_kb.py -w -l > .repo_info/weaknesses_long.txt
         python reporting_scripts/generate_tsv_from_kb.py -m > .repo_info/mitigations.txt
         python reporting_scripts/generate_tsv_from_kb.py -c > .repo_info/CASE_mapping.txt
+        python reporting_scripts/generate_excel_from_kb.py -o .repo_info/solve-it-latest.xlsx
     - name: Commit and push changes
       run: |
         git config --global user.name "github-actions[bot]"
@@ -49,7 +50,8 @@ jobs:
         git add .repo_info/weaknesses_long.txt
         git add .repo_info/mitigations.txt
         git add .repo_info/CASE_mapping.txt
-        git commit -m "Update stats [skip ci]" || echo "No changes to commit"
+        git add .repo_info/solve-it-latest.xlsx
+        git commit -m "Update .repo_info [skip ci]" || echo "No changes to commit"
         git push
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

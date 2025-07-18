@@ -1,6 +1,8 @@
 import os
 import xlsxwriter
 import sys
+import datetime
+import argparse
 import logging
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
@@ -37,6 +39,14 @@ def format_techinque_sheet(worksheet):
 
 if __name__ == '__main__':
 
+    """Command-line entry point for the script."""
+    # Parse command line arguments
+    parser = argparse.ArgumentParser(description="Generate an Excel version of the SOLVE-IT knowledge base")
+    parser.add_argument('-o', action='store', type=str, dest='output_file',
+                        help="output path for spreadsheet.")
+    args = parser.parse_args()
+
+
     # Replace technique organisation configuration file here if needed
     config_file = 'solve-it.json'
 
@@ -50,9 +60,17 @@ if __name__ == '__main__':
 
     tactics_name_list = kb.list_tactics()
 
-    if not os.path.exists('output'):
-        os.mkdir('output')
-    outpath = os.path.join('output', 'solve-it.xlsx')
+    # Determine and if necessary create output folder path
+    if args.output_file is not None:
+        out_folder = os.path.dirname(args.output_file)
+        if not os.path.exists(out_folder):
+            os.makedirs(out_folder)
+        outpath = args.output_file
+    else:
+        if not os.path.exists('output'):
+            os.mkdir('output')
+        outpath = os.path.join('output', 'solve-it.xlsx')
+
 
     print("Output will be to: {}".format(outpath))
 
@@ -66,9 +84,24 @@ if __name__ == '__main__':
     format_headings_in_workbook(workbook, kb.tactics)
     print("- added 'main' worksheet")
 
+    info_sheet = workbook.add_worksheet(name='Info')
     techniques_sheet = workbook.add_worksheet(name='Techniques')
     weaknesses_sheet = workbook.add_worksheet(name='Weaknesses')
     mitigations_sheet = workbook.add_worksheet(name='Mitigations')
+
+    # Adds some stats into the workbook
+    info_sheet.set_column(0, 0, 20)
+    info_sheet.set_column(1, 1, 30)
+    info_sheet.write_string(0, 0, "Property")
+    info_sheet.write_string(0, 1, "Value")
+    info_sheet.write_string(1, 0, "Workbook generated")
+    info_sheet.write_string(1, 1, datetime.datetime.now(tz=datetime.timezone.utc).isoformat())
+    info_sheet.write_string(2, 0, "Number of techniques")
+    info_sheet.write_number(2, 1, len(kb.list_techniques()))
+    info_sheet.write_string(3, 0, "Number of weaknesses")
+    info_sheet.write_number(3, 1, len(kb.list_weaknesses()))
+    info_sheet.write_string(4, 0, "Number of mitigations")
+    info_sheet.write_number(4, 1, len(kb.list_mitigations()))
 
 
     for each_technique_id in sorted(kb.list_techniques()):

@@ -57,7 +57,7 @@ W1055	Data not indexed due to missing substring feature	X
 W1056	Data not indexed due to case sensitivity problem	X					
 W1057	Relevant results not captured by the keyword or keyword list used	X					
 W1058	Results appear in an ‘artefact’ or ‘result’ but the context, source or provenance of result is unclear						X
-W1059	Excessive results returned such that careful review of all results is impractical						X
+W1059	Excessive results returned such that careful review of all results is impractical	X					
 W1060	A relevant piece of media was not flagged as relevant	X		X			
 W1061	An irrelevant piece of media was flagged as relevant			X			
 W1062	The grade or specific tag given to item is incorrect			X			

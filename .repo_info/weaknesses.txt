@@ -14,7 +14,7 @@ W1012	Interaction with the target devices to read synronisation artefacts causes
 W1013	Acquisition includes extra bytes
 W1014	Imaging process changes original data
 W1015	Powering on SSD results in sectors being wiped by TRIM operation
-W1016	Data copied from sectors on source are stored incorrectly
+W1016	Data copied from sectors on source device are stored incorrectly
 W1017	Files or data that is relevant to the investigation is missed
 W1018	Data is collected that is not relevant to the investigation
 W1019	Data is collected and assigned to incorrect device

@@ -377,14 +377,19 @@ def generate_evaluation(techniques=None, lab_config=None, output_file=None, labe
                                            8 + max_mits + 4) + str(start_pos + 2) + '', header_type_format)
             
             # Status formula: Shows "x" if there are unmet mitigations (Y=0 and N>0)
-            form = "=IF(AND(" + xl_col_to_name(8 + max_mits + 0) + str(start_pos + 2) + "=0," + xl_col_to_name(8 + max_mits + 1) + str(
-                start_pos + 2) + ">0),\"x\",\"\")"
+            form = ("=IF(AND(" + xl_col_to_name(8 + max_mits + 0) + str(start_pos + 2) + "=0," + "OR(" +
+                     xl_col_to_name(8 + max_mits + 1) + str(start_pos + 2) + ">0," +
+                     xl_col_to_name(9 + max_mits + 1) + str(start_pos + 2) + ">0)),\"x\",\"\")")
             main_worksheet.write_formula(start_pos + 1, 8 + max_mits + 6,
                                        form, header_type_format)
 
             start_pos += 1
 
         start_pos += 1
+
+    # Hide the risk score calculation columns
+    main_worksheet.set_column("Z:AG", None, None, {"hidden": True})
+    
 
     logging.info(f'Techniques in lab config: {str(technique_log_list)}')
     logging.info(f'Weaknesses in lab config: {str(weakness_log_list)}')

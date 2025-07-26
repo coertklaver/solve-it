@@ -9,7 +9,7 @@ T1007	SyncTriage-based approach
 T1008	Profiling network traffic	
 T1009	Locate cloud account identifiers	
 T1010	Place device in faraday environment	
-T1011	Evidence bags	
+T1011	Store seized devices in evidence bags	
 T1012	Hardware write blockers	
 T1013	Software write blockers	
 T1014	Chain of custody documentation	

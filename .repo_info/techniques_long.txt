@@ -9,7 +9,7 @@ T1007	SyncTriage-based approach	A technique developed in Hargreaves & Marshall (
 T1008	Profiling network traffic		[]
 T1009	Locate cloud account identifiers		[]
 T1010	Place device in faraday environment	Place a device in an environment designed to shield a mobile phone or small digital device from radio waves entering the environment and reaching the device, and to stop radio waves escaping from the environment (adapted from Lennox-Steele & Nisbet (2016))	[]
-T1011	Evidence bags		[]
+T1011	Store seized devices in evidence bags		[]
 T1012	Hardware write blockers	A hardware write blocking device [should] prevent any change to data in the user area of a hard drive while allowing access to all data on a hard drive. (Lyle 2006)	[]
 T1013	Software write blockers	Use of a software-based tool that prevents a computer from writing to computer storage media connected to it (NIST 2006)	[]
 T1014	Chain of custody documentation		[]

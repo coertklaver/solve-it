@@ -56,7 +56,7 @@ M1054	Testing of message extraction and parsing features
 M1055	Correlation of message data with service provider
 M1056	Correlation of message data from third party data (another participant in message thread)
 M1057	Testing of parsing of syncronisation artefacts
-M1058	Checking for other confirmatory indicators of the device that was inferred from syncronisation artefacts
+M1058	Checking for other confirmatory indicators of the inferred device's existence.
 M1059	Ongoing research and documentation of syncronisation artefacts
 M1060	Repair salvaged content by grafting different reference data onto fragment(s) (T1099)
 M1061	Use digital stratigraphy to attempt to attribute data within a specific file system

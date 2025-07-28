@@ -1,6 +1,6 @@
 {
     "id": "M1139",
     "name": "Use automated software monitoring to detect app artefact changes",
-    "technqiue": "T1119",
+    "technique": "T1119",
     "references" : []
 }

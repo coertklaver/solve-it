@@ -1,6 +1,6 @@
 {
     "id": "W1189",
-    "name": "Extraction is incorrect/incomplete due to app changes.",
+    "name": "Artifact extraction is incorrect/incomplete due to app version changes.",
     "INCOMP": "X",
     "INAC-EX": "",
     "INAC-AS": "",

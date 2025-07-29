@@ -1,12 +1,12 @@
 {
     "id": "W1189",
-    "name": "Artifact extraction is incorrect/incomplete due to app version changes.",
+    "name": "Artifact extraction is incomplete due to app version changes.",
     "INCOMP": "X",
     "INAC-EX": "",
     "INAC-AS": "",
     "INAC-ALT": "",
     "INAC-COR": "",
-    "MISINT": "X",
+    "MISINT": "",
     "mitigations": ["M1139"],
     "references": []
 }

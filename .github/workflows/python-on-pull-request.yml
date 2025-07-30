@@ -5,7 +5,7 @@ name: Run on pull request
 
 on:
   pull_request:
-    types: [opened, reopened, review_requested]
+    types: [opened, reopened]
 jobs:
   build:
     runs-on: ubuntu-latest

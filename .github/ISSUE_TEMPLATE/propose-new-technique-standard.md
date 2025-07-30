@@ -2,7 +2,7 @@
 name: Propose New Technique STANDARD
 about: Propose a new technique, with details
 title: 'Create new technique: [technique name]'
-labels: solve-it content update
+labels: 'content: new technique'
 assignees: ''
 
 ---

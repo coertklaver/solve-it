@@ -262,7 +262,8 @@ if __name__ == '__main__':
                                                  cell_format=sub_technique_format1)
 
                         if len(each_subtechnique.get('subtechniques')) > 0:
-                            logging.error(f'Nested subtechniques are not currently supported. {str(each_subtechnique.get('subtechniques'))} and below are not rendered in output')
+                            logging.error(f'Nested subtechniques are not currently supported')
+                            logging.error(f'{str(each_subtechnique.get('subtechniques'))}')
                             sys.exit(-1)
 
                         techniques_added.append(each_subtechnique_id)

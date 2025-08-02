@@ -257,6 +257,11 @@ if __name__ == '__main__':
                     for each_subtechnique_id in subtechniques:
                         row = tactics_row_indexes[tactic]
                         each_subtechnique = kb.get_technique(each_subtechnique_id)
+                        if each_subtechnique is None:
+                            raise ValueError(f'Subtechnqiue {each_subtechnique_id} not found. ({each_technique_id})')
+                            sys.exit(-1)
+
+
                         main_worksheet.write_url(row, column, 'internal:{}!A1'.format(each_subtechnique.get('id')),
                                                  string='> ' + each_subtechnique.get('name') + '\n' + each_subtechnique.get('id'),
                                                  cell_format=sub_technique_format1)

@@ -6,7 +6,7 @@
     "details": "This compliments case-type wordlists (T1122) using words typical to specific offences.",
     "subtechniques": [],
     "examples":  [],
-    "weaknesses": ["W1059"],
+    "weaknesses": ["W1059", "W1192"],
     "CASE_output_classes" : [],
     "references": []
 }

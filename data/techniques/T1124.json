@@ -1,7 +1,7 @@
 {
     "id": "T1124",
     "name": "Keyword search (indexed)",
-    "description": "Searching for keywords within an index generated of data in a case",
+    "description": "Searching for keywords within a generated index of data in a case",
     "synonyms": ["indexed search"],
     "details": "",
     "subtechniques": [],

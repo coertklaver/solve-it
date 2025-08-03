@@ -50,12 +50,12 @@ W1048	File recovered from backup but presented in the wrong location			X
 W1049	File content recovered incorrectly from backup				X		
 W1050	Failure to highlight that there are other apps present for which data is not available						X
 W1051	Failure to highlight that not all app data may be present in a backup						X
-W1052	Incorrect retrieval of results from the index	X	X	X			
-W1053	Incorrect parsing of a regular expression	X	X	X			
-W1054	Data not indexed due to text encoding	X					
-W1055	Data not indexed due to missing substring feature	X					
-W1056	Data not indexed due to case sensitivity problem	X					
-W1057	Relevant results not captured by the keyword or keyword list used	X					
+W1052	Incorrect retrieval of results from an index	X	X				
+W1053	Incorrect parsing of a supplied regular expression used for keyword searching	X	X	X			
+W1054	Data not indexed for keyword searching due to text encoding	X					
+W1055	Data not indexed for keyword searching due to missing substring feature	X					
+W1056	Data not indexed for keyword searching due to case sensitivity problem	X					
+W1057	Relevant results not captured by the case-type keyword list used	X					
 W1058	Results appear in an ‘artefact’ or ‘result’ but the context, source or provenance of result is unclear						X
 W1059	Excessive results returned such that careful review of all results is impractical	X					
 W1060	A relevant piece of media was not flagged as relevant	X		X			
@@ -187,3 +187,10 @@ W1185	Failure to enumerate all files in a standard archive format	X
 W1186	Missing files with file name/path-based pattern matching due to renaming	X					
 W1187	Failure to match file name/path pattern due to mismatch of search term used and pattern match engine.	X					
 W1188	Failure to match file name/path pattern due to implementation error in matching engine.	X					
+W1192	Relevant results not captured by the case-specific keywords used	X					
+W1193	Keyword results missed since relevant keyword is split over a sector or cluster boundary	X					
+W1194	Keyword results missed since relevant keyword is inside compressed or encoded data	X					
+W1195	One or more keyword results are associated with a file by a tool but was within slack space and therefore it may not have been part of that file			X			X
+W1196	One or more files with relevant keyword results are missed since they are not stored as text, e.g. within an image	X					
+W1197	Data not indexed for keyword searching due to compression	X					
+W1198	Data not indexed for keyword searching due to file or content encoding	X					

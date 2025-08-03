@@ -136,3 +136,14 @@ M1135	Testing that correct metadata/status of connected devices is extracted
 M1136	Testing of archive format parsing
 M1137	Review of logs for any file extraction errors
 M1138	Testing file name/path pattern matching engine
+M1141	Careful review of case brief for case-specific keyword list generation
+M1142	Review of case-specific keyword list by case officer via peer review
+M1143	Use live logical keyword search (T1127)
+M1144	Use indexed keyword search (T1124)
+M1145	Apply OCR to files and search or index resulting text
+M1146	Ensure keyword indexing settings capture text encodings required during indexing
+M1147	Ensure keyword indexing settings configure text substring handling as required during indexing
+M1148	Ensure keyword indexing settings configure case sensitivity for indexing as required
+M1149	Ensure keyword indexing settings mean that decompression will be applied as required during indexing
+M1150	Ensure keyword indexing settings mean that file formats will be decoded as required during indexing
+M1151	Check keyword results are part of allocated file, or if not perform detailed analysis to determine if association is valid

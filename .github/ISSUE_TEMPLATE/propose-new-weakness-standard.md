@@ -2,7 +2,7 @@
 name: Propose New Weakness STANDARD
 about: Propose a new weakness, with details
 title: 'Create new weakness: [weakness name]'
-labels: solve-it content update
+labels: 'content: new weakness'
 assignees: ''
 
 ---

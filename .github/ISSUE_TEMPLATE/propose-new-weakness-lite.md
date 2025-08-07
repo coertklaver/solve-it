@@ -2,7 +2,7 @@
 name: Propose New Weakness LITE
 about: Propose a new weakness with minimal information
 title: 'Create new weakness: [weakness name]'
-labels: ''
+labels: 'content: new weakness'
 assignees: ''
 
 ---

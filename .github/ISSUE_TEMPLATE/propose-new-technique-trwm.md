@@ -1,7 +1,7 @@
 ---
 name: Propose New Technique TRWM
 about: Propose a new technique, with a systematic review and worksheet
-title: ''
+title: 'Create new technique: [technique name]'
 labels: ''
 assignees: ''
 

@@ -2,7 +2,7 @@
 name: Propose New Technique LITE
 about: Propose a new technique with minimal information
 title: 'Create new technique: [technique name]'
-labels: ''
+labels: 'content: new technique'
 assignees: ''
 
 ---

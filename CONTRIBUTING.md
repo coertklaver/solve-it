@@ -50,6 +50,7 @@ This is the easiest way to propose updates to content in the SOLVE-IT knowledge 
   2. Make your changes and commit them with descriptive commit messages.
   3. Submit a pull request to the main repository's `main` branch.
 * Provide a clear and detailed description of your changes in the pull request description.
+* If you want to share code in progress via pull request, use a prefix "[WORK IN PROGRESS]" in the pull request title. 
 
 ### Specifics
 

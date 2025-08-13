@@ -185,7 +185,7 @@ def generate_evaluation(techniques=None, lab_config=None, output_file=None, labe
     max_mits = kb.get_max_mitigations_per_technique()
     print('Max mitigations: {}'.format(max_mits))
     max_letter = chr(ord('I') + max_mits - 1)
-    main_worksheet.merge_range("I1:{}1".format(max_letter), "Mitigations", header_type_format)
+    main_worksheet.merge_range("I1:{}1".format(max_letter), "Potential Mitigations", header_type_format)
     for i in range(0, max_mits):
         main_worksheet.write_string(1, 8 + i, "M{}".format(i), wrapped_title)
         main_worksheet.set_column(8 + i, 8 + i, 12)     # set width of mitigations columns

@@ -345,7 +345,7 @@ if __name__ == '__main__':
         examples = kb.get_technique(each_technique_id).get('examples') or []
         worksheet.write_string(8, 1, str(examples), cell_format=technique_format)
 
-        worksheet.write_string(10, 0, 'Potential weaknesses:', bold_format)
+        worksheet.write_string(10, 0, 'Potential Weaknesses:', bold_format)
 
         worksheet.write_string(11, 0, 'Weakness ID:', bold_format)
         worksheet.write_string(11, 1, 'Detail:', bold_format)
@@ -355,7 +355,7 @@ if __name__ == '__main__':
         worksheet.write_string(11, 5, 'INAC-ALT', bold_format)
         worksheet.write_string(11, 6, 'INAC-COR', bold_format)
         worksheet.write_string(11, 7, 'MISINT', bold_format)
-        worksheet.write_string(11, 8, 'Mitigations', bold_format)
+        worksheet.write_string(11, 8, 'Potential Mitigations', bold_format)
 
         i = 0
         mit_list_for_this_technique = []
@@ -386,7 +386,7 @@ if __name__ == '__main__':
             i = i+1
 
         mitigation_start_row = err_list_start_row + i + 1
-        worksheet.write_string(mitigation_start_row, 0, 'Mitigations:', bold_format)
+        worksheet.write_string(mitigation_start_row, 0, 'Potential Mitigations:', bold_format)
 
         # ----------------------------------------------------------------------------------------------------------------
         # build list of *all* mitigations for this technique

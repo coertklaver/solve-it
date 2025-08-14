@@ -136,6 +136,8 @@ M1135	Testing that correct metadata/status of connected devices is extracted
 M1136	Testing of archive format parsing
 M1137	Review of logs for any file extraction errors
 M1138	Testing file name/path pattern matching engine
+M1139	Use automated software monitoring to detect app artefact changes (T1119)
+M1140	Use automation framework to emulate user actions to generate test data
 M1141	Careful review of case brief for case-specific keyword list generation
 M1142	Review of case-specific keyword list by case officer
 M1143	Use live logical keyword search (T1127)

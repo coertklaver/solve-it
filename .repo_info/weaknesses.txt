@@ -187,6 +187,9 @@ W1185	Failure to enumerate all files in a standard archive format
 W1186	Missing files with file name/path-based pattern matching due to renaming
 W1187	Failure to match file name/path pattern due to mismatch of search term used and pattern match engine.
 W1188	Failure to match file name/path pattern due to implementation error in matching engine.
+W1189	Artifact extraction is incomplete due to app version changes.
+W1190	Interpretation of app data is incorrect due to app version changes.
+W1191	Missing changes in app artifacts during research since app interaction is needed to cause changes
 W1192	Relevant results not captured by the case-specific keywords used
 W1193	Keyword results missed since relevant keyword is split over a sector or cluster boundary
 W1194	Keyword results missed since relevant keyword is inside compressed or encoded data

@@ -115,6 +115,8 @@ T1115	Visualisation of geolocation information
 T1116	Determine connected devices	
 T1117	Time-based event reconstruction	
 T1118	Locate relevant files by path	
+T1119	Automatically scan for artifact changes caused by app updates	
+T1120	Automated artifact extraction	
 T1121	Keyword indexing	
 T1122	Keyword search (case-type wordlists)	
 T1123	Keyword search (case-specific wordlists)	

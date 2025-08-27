@@ -2,7 +2,7 @@
 name: Update Weakness STANDARD
 about: Update the details of an existing weakness
 title: 'Update weakness [Wxxxx: weakness name]'
-labels: 'content: update technique'
+labels: 'content: update weakness'
 assignees: ''
 
 ---

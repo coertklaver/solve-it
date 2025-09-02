@@ -11,10 +11,11 @@ This is a community project so please see [CONTRIBUTING.md](CONTRIBUTING.md) for
 
 ## Related repositories
 
-- educational material for SOLVE-IT can be found [here](https://github.com/SOLVE-IT-DF/solve-it-education) 
+- educational material for SOLVE-IT can be found [here](https://github.com/SOLVE-IT-DF/solve-it-education)
+   - includes presentations, class exercises, one-page primer, contributing guide for digital forensics researchers.
 - example uses of SOLVE-IT can be found [here](https://github.com/SOLVE-IT-DF/solve-it-examples), 
 - a repository that uses SOLVE-IT to consider applications of AI to digital forensics can be found [here](https://github.com/SOLVE-IT-DF/solve-it-applications-ai-review)
-
+- an MCP server providing LLM access to SOLVE-IT [here](https://github.com/CKE-Proto/solve_it_mcp) 
 
 ## Concepts and structure
 The high-level concepts are:

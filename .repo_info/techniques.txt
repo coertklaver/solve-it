@@ -54,8 +54,8 @@ T1053	Entity extraction
 T1054	Manual content review for relevant material	
 T1055	File system content inspection	
 T1056	Entity connection enumeration	
-T1057	Steganography detection	
-T1058	Mismatched file extension detection	
+T1057	Search for indicators of steganography	
+T1058	Search for mismatched file extensions	
 T1059	Identify partitions	
 T1060	Process file system structures	
 T1061	Non-allocated file recovery	
@@ -124,3 +124,8 @@ T1124	Keyword search (indexed)
 T1125	Keyword search (live)	
 T1126	Keyword search (live) (physical)	
 T1127	Keyword search (live) (logical)	
+T1128	Search for indicators of malware	
+T1129	Search for indicators of clock tampering	
+T1130	Search for indicators of encrypted data	
+T1131	Search for indicators of trail obfuscation	
+T1132	Search for indicators of artifact wiping	

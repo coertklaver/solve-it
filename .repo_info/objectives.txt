@@ -12,6 +12,7 @@ Extract artifacts stored by applications	todo
 Extract artifacts, or content of specific types	todo
 Locate potentially relevant content	todo
 Review content for relevance	todo
+Detect anti-forensics and other anomalies	todo
 Establish identities	todo
 Create visualizations	todo
 Reconstruct events	todo

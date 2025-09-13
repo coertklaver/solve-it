@@ -72,8 +72,8 @@
 
     {"name":"Locate potentially relevant content",
     "description": "Attempt to find digital artifacts relevant to the investigation.",
-    "techniques": ["T1051", "T1050", "T1049", "T1058",
-                    "T1057", "T1118", "T1086",
+    "techniques": ["T1051", "T1050", "T1049",
+                     "T1118", "T1086",
                      "T1121", "T1122", "T1123", "T1124", "T1125"]
     },
 
@@ -83,6 +83,10 @@
     "techniques": ["T1054", "T1055", "T1079", "T1080", "T1081", "T1082"]
     },
 
+    {"name":"Detect anti-forensics and other anomalies",
+    "description": "Search for indicators of anti-forensic techniques or other anomalies such as malware, which could affect interpretation.",
+    "techniques": ["T1057", "T1058", "T1128", "T1129", "T1130", "T1131", "T1132"]
+    },
 
     {"name":"Establish identities",
     "description": "Attempt to link data or devices to individuals.",

@@ -129,3 +129,4 @@ T1129	Search for indicators of clock tampering	Searching for indicators that the
 T1130	Search for indicators of encrypted data	Searching for the presence of current or historical encrypted data on a system	[]
 T1131	Search for indicators of trail obfuscation	Searching for the presence of current or historical trail obfuscation on a system	[]
 T1132	Search for indicators of artifact wiping	Searching for the presence of current or historical artifact wiping	['artifact scrubbing']
+T1133	AI companion app examination	The forensic examination of the artifacts describing the configuration or the interaction with an AI companion app or service.	[]

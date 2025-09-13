@@ -129,3 +129,4 @@ T1129	Search for indicators of clock tampering
 T1130	Search for indicators of encrypted data	
 T1131	Search for indicators of trail obfuscation	
 T1132	Search for indicators of artifact wiping	
+T1133	AI companion app examination	

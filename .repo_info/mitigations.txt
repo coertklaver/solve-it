@@ -2,7 +2,7 @@ ID	Name
 M1001	Review of all triage results that are relied on during the full digital forensic examination
 M1002	Testing of the faraday environment to be used
 M1003	Check image size corresponds with drive label
-M1004	Check hash of image matches hash of source device
+M1004	Check hash of image matches hash of source device (T1042)
 M1005	Testing to ensure software and hardware setup detects HPAs
 M1006	Testing to ensure software and hardware setup detects DCOs
 M1007	Use hardware write blocker (T1012)

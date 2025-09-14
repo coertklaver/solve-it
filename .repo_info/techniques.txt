@@ -19,6 +19,7 @@ T1017	Network packet capture
 T1018	Remote data collection	
 T1019	Mobile backup extraction	
 T1020	Mobile file system extraction	
+T1021	Configuration file examination	
 T1022	Mobile device screenshot based capture	
 T1023	Cloud data collection using account details	
 T1024	Cloud data collection via request	
@@ -73,6 +74,7 @@ T1072	Chat app examination
 T1073	Calendar app examination	
 T1074	Social network app examination	
 T1075	Maps/travel app examination	
+T1076	Log file examination	
 T1077	Photos app examination	
 T1078	Cloud sync app examination	
 T1079	Audio content analysis	

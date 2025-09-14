@@ -169,3 +169,14 @@ M1168	Request logs of access times from service provider
 M1169	Testing of app settings recovery from AI companion app
 M1170	Experiments with test device to view possible settings of forensic value
 M1171	Testing of the recovery of companion AI bot settings
+M1172	Also examine any older versions of the logs from backups
+M1173	Check logging settings so the bounds of logging are known
+M1174	Check logging settings to determine expected behaviour
+M1175	Ensure any available archive logs are also examined
+M1176	Ensure log entry type interpretation applies for the software version being examined
+M1177	Ensure resolution or limitations of logfile timestamps are understood
+M1178	Ensure timezone handling method for logfile timestamps is understood
+M1179	If timestamp is local time, ensure that the system timezone was applicable at time of log entry generation
+M1180	Testing correct extraction of logfile entry timestamps
+M1181	Testing logfile parsing capability
+M1182	Testing of correct log entry type extraction

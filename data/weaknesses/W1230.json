@@ -1,5 +1,5 @@
 {
-    "id": "W1203",
+    "id": "W1230",
     "name": "Log entry missing due to rotation size or timing",
     "INCOMP": "x",
     "INAC-EX": "",
@@ -7,6 +7,6 @@
     "INAC-ALT": "",
     "INAC-COR": "",
     "MISINT": "",
-    "mitigations": ["M1154", "M1155"],
+    "mitigations": ["M1172", "M1173", "M1175"],
     "references": ["https://www.crowdstrike.com/en-us/guides/syslog-logging/advanced-concepts/"]
 }

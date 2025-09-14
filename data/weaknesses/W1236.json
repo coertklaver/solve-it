@@ -1,5 +1,5 @@
 {
-    "id": "W1209",
+    "id": "W1236",
     "name": "Incorrectly interpreting a log entry type based on a different version of the generating software or operating system",
     "INCOMP": "",
     "INAC-EX": "",
@@ -7,6 +7,6 @@
     "INAC-ALT": "",
     "INAC-COR": "",
     "MISINT": "x",
-    "mitigations": ["M1158"],
+    "mitigations": ["M1176"],
     "references": []
 }

@@ -67,7 +67,7 @@
 
     {"name":"Extract artifacts, or content of specific types",
     "description": "Process data to extract artifacts or stored content of specific types.",
-    "techniques": ["T1071", "T1100", "T1099", "T1052", "T1053", "T1056", "T1120"]
+    "techniques": ["T1071", "T1076", "T1100", "T1099", "T1052", "T1053", "T1056", "T1120"]
     },
 
     {"name":"Locate potentially relevant content",

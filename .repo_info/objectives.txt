@@ -1,18 +1,20 @@
 Objective	Description
-Find potential evidence sources	todo
-Prioritise	todo
-Preserve	todo
-Acquire	todo
-Gain Access	todo
-Process Storage Format	todo
-Perform Data Reduction	todo
-Extract Partition and File System Information	todo
-Extract Operating System Feature Information	todo
-Extract Application-based Information	todo
-Examine data at the file-level	todo
-Locate Relevant Digital Artefacts	todo
-Establish Identities	todo
-Create Visualisation	todo
-Reconstruct Events	todo
-Research	todo
-Documentation	todo
+Find potential digital evidence sources	todo
+Prioritize digital evidence sources	todo
+Preserve digital evidence	todo
+Acquire data	todo
+Gain access	todo
+Read data from digital evidence storage formats	todo
+Reduce data under consideration	todo
+Access partitions, volumes and file systems data	todo
+Extract artifacts stored by the operating system	todo
+Extract artifacts stored by applications	todo
+Extract artifacts, or content of specific types	todo
+Locate potentially relevant content	todo
+Review content for relevance	todo
+Detect anti-forensics and other anomalies	todo
+Establish identities	todo
+Create visualizations	todo
+Reconstruct events	todo
+Conduct research	todo
+Produce documentation	todo

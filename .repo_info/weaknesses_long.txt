@@ -199,3 +199,30 @@ W1197	Data not indexed for keyword searching due to compression	X
 W1198	Data not indexed for keyword searching due to file or content encoding	X					
 W1199	Excessive keyword results returned from case-specific wordlists such that careful review of all results is impractical	X					
 W1200	Failure to conduct iterative keyword searching due to excessive time taken per search	X					
+W1201	Failure to recover live messages to or from the AI companion app	x					
+W1202	Failure to recover deleted but recoverable messages to or from the AI companion app	x					
+W1203	Presenting a message from the user or AI companion app that did not exist		x				
+W1204	Presenting a deleted message to the AI companion app as a live one, or vice versa			x			
+W1205	Presenting a message to the AI chat app as from the AI companion app, or vice versa			x			
+W1206	Merging the contents of two deleted messages together and presenting them as a single one sent to the AI companion app					x	
+W1207	Failure to display a message to or from the AI companion app in the context of other messages						x
+W1208	Failure to recover live images sent to or from the AI companion app	x					
+W1209	Failure to recover deleted but recoverable images sent to or from the AI companion app	x					
+W1210	Presenting an image sent from the user or AI companion app that did not exist		x				
+W1211	Presenting a deleted image sent to the AI companion app as a live one, or vice versa			x			
+W1212	Presenting an image sent to the AI chat app as from the AI companion app, or vice versa			x			
+W1213	Failure to display an image to or from the AI companion app in the context of other messages						x
+W1214	Failure to recover live records of calls to or from the AI companion app	x					
+W1215	Failure to recover deleted but recoverable records of calls to or from the AI companion app	x					
+W1216	Presenting a call to or from the AI companion app that did not exist		x				
+W1217	Presenting a deleted call to the AI companion app as a live one, or vice versa			x			
+W1218	Presenting a call to the AI companion app as from the AI companion app, or vice versa			x			
+W1219	Failure to recover metadata associated with an interaction with the AI companion app	x					
+W1220	Presenting an incorrect timestamp associated with an interaction with the AI companion app						x
+W1221	Failure to recover account details from the AI app data	x					
+W1222	Presenting account details that did not exist		x				
+W1223	Live access to the device (for extraction) updates last access times for an account	x			x		
+W1224	Presenting a deleted account as live, or vice versa			x			
+W1225	Failure to recover relevant app settings	x					
+W1226	Failure to recover relevant AI bot settings	x					
+W1227	Associating a configured bot with the wrong account			x			

@@ -4,6 +4,7 @@ import sys
 import datetime
 import argparse
 import logging
+import pprint
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from solve_it_library import KnowledgeBase
@@ -29,6 +30,7 @@ def format_headings_in_workbook(workbook, tactics):
     # write headers
     for i in range(0,len(tactics)):
         worksheet.write_string(0, i, tactics[i].get('name'), header_format)
+        worksheet.write_comment(0, i, tactics[i].get('description'), {'font_size': 12, 'width': 200, 'height': 200})
 
     return workbook
 
@@ -88,21 +90,6 @@ if __name__ == '__main__':
     techniques_sheet = workbook.add_worksheet(name='Techniques')
     weaknesses_sheet = workbook.add_worksheet(name='Weaknesses')
     mitigations_sheet = workbook.add_worksheet(name='Mitigations')
-
-    # Adds some stats into the workbook
-    info_sheet.set_column(0, 0, 20)
-    info_sheet.set_column(1, 1, 30)
-    info_sheet.write_string(0, 0, "Property")
-    info_sheet.write_string(0, 1, "Value")
-    info_sheet.write_string(1, 0, "Workbook generated")
-    info_sheet.write_string(1, 1, datetime.datetime.now(tz=datetime.timezone.utc).isoformat())
-    info_sheet.write_string(2, 0, "Number of techniques")
-    info_sheet.write_number(2, 1, len(kb.list_techniques()))
-    info_sheet.write_string(3, 0, "Number of weaknesses")
-    info_sheet.write_number(3, 1, len(kb.list_weaknesses()))
-    info_sheet.write_string(4, 0, "Number of mitigations")
-    info_sheet.write_number(4, 1, len(kb.list_mitigations()))
-
 
     for each_technique_id in sorted(kb.list_techniques()):
         technique_name = kb.get_technique(each_technique_id).get('name')
@@ -226,6 +213,8 @@ if __name__ == '__main__':
 
     techniques_added = []
 
+    total_techniques_with_weaknesses = 0
+
     for each_tactic in kb.tactics:
         tactic = each_tactic.get('name')
         column = tactics_name_list.index(tactic)
@@ -246,6 +235,7 @@ if __name__ == '__main__':
                         the_format = technique_format
                     else:
                         the_format = technique_format2
+                        total_techniques_with_weaknesses += 1
 
                     main_worksheet.write_url(row, column, 'internal:{}!A1'.format(each_technique_id),
                                              string=technique_name + '\n' + each_technique_id,
@@ -272,6 +262,10 @@ if __name__ == '__main__':
                             sys.exit(-1)
 
                         techniques_added.append(each_subtechnique_id)
+
+                        if len(each_subtechnique.get('weaknesses')) > 0:
+                            total_techniques_with_weaknesses += 1
+
                         tactics_row_indexes[tactic] += 1
 
                 except KeyError:
@@ -301,8 +295,10 @@ if __name__ == '__main__':
 
         worksheet = workbook.get_worksheet_by_name(each_technique_id)
 
-        technique_format = workbook.add_format()
-        technique_format.set_text_wrap()
+        technique_list_format = workbook.add_format()
+        technique_list_format.set_text_wrap()
+        technique_list_format.set_align('left')
+        technique_list_format.set_align('vcenter')
 
         bold_format = workbook.add_format()
         bold_format.set_bold()
@@ -310,9 +306,10 @@ if __name__ == '__main__':
 
         worksheet.write_url(0, 2, 'internal:Main!A1', string='back to main')
 
-        worksheet.set_column(0, 0, 30)
+        worksheet.set_column(0, 0, 20)
         worksheet.set_column(1, 1, 50)
-        worksheet.set_column(8, 8, 60)
+        worksheet.set_column(8, 8, 30)
+        worksheet.set_column(9, 9, 140, None, {'hidden': True})
 
         worksheet.write_string(0, 0, 'Technique name: ', bold_format)
         worksheet.write_string(0, 1, technique_name)
@@ -323,13 +320,13 @@ if __name__ == '__main__':
 
         worksheet.write_string(3, 0, 'Description: ', bold_format)
         description = kb.get_technique(each_technique_id).get('description') or ''
-        worksheet.write_string(3, 1, description, cell_format=technique_format)
+        worksheet.write_string(3, 1, description, cell_format=technique_list_format)
         worksheet.write_string(4, 0, 'Synonyms: ', bold_format)
         synonyms = kb.get_technique(each_technique_id).get('synonyms') or []
-        worksheet.write_string(4, 1, str(synonyms))
+        worksheet.write_string(4, 1, pprint.pformat(synonyms))
         worksheet.write_string(5, 0, 'Details: ', bold_format)
         details = kb.get_technique(each_technique_id).get('details') or ''
-        worksheet.write_string(5, 1, details, cell_format=technique_format)
+        worksheet.write_string(5, 1, details, cell_format=technique_list_format)
         worksheet.write_string(6, 0, 'Subtechniques: ', bold_format)
         subtechniques = kb.get_technique(each_technique_id).get('subtechniques') or []
 
@@ -337,13 +334,13 @@ if __name__ == '__main__':
         sub_techniques_out = [sub_t + ':' + kb.get_technique(sub_t).get('name') for sub_t in subtechniques]
         worksheet.write_string(6, 1, str(sub_techniques_out))
 
-        worksheet.write_string(7, 0, 'CASE output entities: ', bold_format)
+        worksheet.write_string(7, 0, 'CASE output entities: ', bold_format)        
         case_output = kb.get_technique(each_technique_id).get('CASE_output_classes') or []
-        worksheet.write_string(7, 1, str(case_output))
+        worksheet.write_string(7, 1, pprint.pformat(case_output), cell_format=technique_list_format)
 
         worksheet.write_string(8, 0, 'Examples: ', bold_format)
         examples = kb.get_technique(each_technique_id).get('examples') or []
-        worksheet.write_string(8, 1, str(examples), cell_format=technique_format)
+        worksheet.write_string(8, 1, pprint.pformat(examples), cell_format=technique_list_format)
 
         worksheet.write_string(10, 0, 'Potential Weaknesses:', bold_format)
 
@@ -356,6 +353,7 @@ if __name__ == '__main__':
         worksheet.write_string(11, 6, 'INAC-COR', bold_format)
         worksheet.write_string(11, 7, 'MISINT', bold_format)
         worksheet.write_string(11, 8, 'Potential Mitigations', bold_format)
+        worksheet.write_string(11, 9, 'Potential Mitigations (details)', bold_format)
 
         i = 0
         mit_list_for_this_technique = []
@@ -364,8 +362,8 @@ if __name__ == '__main__':
             weakness_info = kb.get_weakness(each_weakness)
 
             try:
-                worksheet.write_string(err_list_start_row + i, 0, each_weakness)   # write ID
-                worksheet.write_string(err_list_start_row + i, 1, weakness_info.get('name'), cell_format=technique_format)
+                worksheet.write_string(err_list_start_row + i, 0, each_weakness, cell_format=technique_list_format)   # write ID
+                worksheet.write_string(err_list_start_row + i, 1, weakness_info.get('name'), cell_format=technique_list_format)
                 worksheet.write_string(err_list_start_row + i, 2, weakness_info.get('INCOMP', ''), cell_format=weakness_type_format)
                 worksheet.write_string(err_list_start_row + i, 3, weakness_info.get('INAC_EX', ''), cell_format=weakness_type_format)
                 worksheet.write_string(err_list_start_row + i, 4, weakness_info.get('INAC_AS', ''), cell_format=weakness_type_format)
@@ -377,12 +375,15 @@ if __name__ == '__main__':
                 quit()
 
             # Write the mitigations at the end of each weakness
-            mit_string = ''
+            mit_string_short = ''
+            mit_string_long = ''
             for each_mitigation in weakness_info.get('mitigations'):
-                mit_string = mit_string + each_mitigation + ','
+                mit_string_short = mit_string_short + f"{each_mitigation}, "  
+                mit_string_long = mit_string_long + f"{each_mitigation} ({kb.get_mitigation(each_mitigation).get('name')})\n"  
                 mit_list_for_this_technique.append(each_mitigation)
-
-            worksheet.write_string(err_list_start_row + i, 8, mit_string, cell_format=technique_format)
+            worksheet.write_string(err_list_start_row + i, 8, mit_string_short.rstrip(', '), cell_format=technique_list_format)
+            worksheet.write_comment(err_list_start_row + i, 8, mit_string_long.rstrip('\n'), {"font_size": 12, "x_scale": 3.0, "height": len(weakness_info.get('mitigations') * 14 * 3)})
+            # worksheet.write_string(err_list_start_row + i, 9, mit_string_long.rstrip('\n'))
             i = i+1
 
         mitigation_start_row = err_list_start_row + i + 1
@@ -406,7 +407,7 @@ if __name__ == '__main__':
                                         string=cell_str,
                                         cell_format=technique_format)
                 else:
-                    worksheet.write_string(mitigation_start_row + i, 1, kb.get_mitigation(each_mit).get('name'), cell_format=technique_format)
+                    worksheet.write_string(mitigation_start_row + i, 1, kb.get_mitigation(each_mit).get('name'), cell_format=technique_list_format)
             except AttributeError:
                 print("Mitigation not found '{}'".format(each_mit))
                 quit()
@@ -454,15 +455,37 @@ if __name__ == '__main__':
         # write the header
         refs_start = mitigation_start_row + i + 2
         worksheet.write_string(refs_start, 0, 'References:', bold_format)
-        i = 0
+        i = 1
 
         # write the actual references, with indication as to whether they came from T, E or M
         for each_reference in references:
             # worksheet.setrow(refs_start+i+1, 100)
             worksheet.merge_range("B" + str(refs_start+i+1) + ":H" + str(refs_start+i+1), "")
-            worksheet.write_string(refs_start + i, 1, each_reference, cell_format=technique_format)
-            worksheet.write_string(refs_start + i, 8, str(references.get(each_reference)), cell_format=technique_format)
+            worksheet.write_string(refs_start + i, 1, each_reference, cell_format=technique_list_format)
+            worksheet.write_string(refs_start + i, 8, str(references.get(each_reference)), cell_format=technique_list_format)
             i += 1
     print("- all individual techniques worksheets updated")
+
+
+    # Adds some stats into the workbook
+    info_sheet.set_column(0, 0, 20)
+    info_sheet.set_column(1, 1, 30)
+    info_sheet.write_string(0, 0, "Property")
+    info_sheet.write_string(0, 1, "Value")
+    info_sheet.write_string(1, 0, "Workbook generated")
+    info_sheet.write_string(1, 1, datetime.datetime.now(tz=datetime.timezone.utc).isoformat())
+    info_sheet.write_string(2, 0, "Number of objectives")
+    info_sheet.write_number(2, 1, len(kb.list_objectives()))
+    info_sheet.write_string(3, 0, "Number of techniques")
+    info_sheet.write_number(3, 1, len(kb.list_techniques()))
+    info_sheet.write_string(4, 0, "Number of weaknesses")
+    info_sheet.write_number(4, 1, len(kb.list_weaknesses()))
+    info_sheet.write_string(5, 0, "Number of mitigations")
+    info_sheet.write_number(5, 1, len(kb.list_mitigations()))
+    info_sheet.write_string(6, 0, "Number of techniques with weaknesses")
+    info_sheet.write_number(6, 1, total_techniques_with_weaknesses)
+    info_sheet.write_string(7, 0, "Proportion of techniques with weaknesses")
+    info_sheet.write_number(7, 1, round(total_techniques_with_weaknesses / len(kb.list_techniques()), 2))
+
 
     workbook.close()

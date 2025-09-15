@@ -40,8 +40,9 @@ Each of these concepts are contained in subfolders within the [\data](https://gi
 
 ## Viewing the knowledge base in a spreadsheet
 
-Pre-generated xlsx files can be found in the [releases](https://github.com/SOLVE-IT-DF/solve-it/releases) section, published at regular intervals. The most up-to-date version can be found [here](https://github.com/SOLVE-IT-DF/solve-it/blob/main/.repo_info/solve-it-latest.xlsx), which is auto-generated on each commit.
+Pre-generated xlsx files can be found in the [releases](https://github.com/SOLVE-IT-DF/solve-it/releases) section, published at regular intervals. 
 
+Alternatively the repository is configured to compile a new version of the Excel spreadsheet with every commit. You can therefore find the most up-to-date version [here](https://github.com/SOLVE-IT-DF/solve-it/blob/main/.repo_info/solve-it-latest.xlsx).
 
 If you want to generate your own from the raw data (useful if you are adding or editing content), a utility script is provided, `reporting_scripts/generate_excel_from_kb.py`. This python3 script will generate an Excel spreadsheet (solve-it.xlsx) based on the current version of the JSON data (using the solve-it.json categorisations). This uses the Python xlsxwriter package. 
 

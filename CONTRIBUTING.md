@@ -2,6 +2,8 @@
 
 THIS DOCUMENT IS UNDER DEVELOPMENT 
 
+There is a document "SOLVE-IT for researchers" is a useful related resource. Available [here](https://github.com/SOLVE-IT-DF/solve-it-education/tree/main/guide-for-researchers)
+
 ## Introduction
 
 There are multiple ways you can contribute to SOLVE-IT. 

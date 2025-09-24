@@ -39,9 +39,10 @@ All content contributions should start in the issue tracker, since discussion is
 This is the easiest way to propose updates to content in the SOLVE-IT knowledge base.
 
 * Visit the SOLVE-IT [issue tracker](https://github.com/SOLVE-IT-DF/solve-it/issues).
-* Select one of the templates. We offer 'STANDARD' or 'LITE' templates for content contributions:
+* Select one of the templates. We offer 'STANDARD', 'LITE' or 'TRWM' templates for content contributions:
   * STANDARD asks for all the details needed to populate the content in a structured for.
   * LITE requests the miminal information needed, with a free text 'notes' section for additional information.
+  * TRWM is a much more extensive review to systmatically consider the nature of the Technique, Results, Weaknesses and Mitigations. It uses a Google worksheet to help structure the review of a potential technique and results in TSV files that can be programatically converted into JSON ready for the knowledge base. An exercise that works through the TRWM process is available [here](https://github.com/SOLVE-IT-DF/solve-it-education/tree/main/class-exercises), and a detailed description of the process will shortly be available [here](https://github.com/SOLVE-IT-DF/solve-it-education/tree/main/trwm-explained).
 * Submit the suggestion as a github issue for review.
 
 

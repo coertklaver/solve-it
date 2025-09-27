@@ -1,12 +1,12 @@
 {
     "id": "T1028",
     "name": "Chip-off",
-    "description": "",
+    "description": "With the 'Chip-off' method, the chip(s) of interest is/are physically removed from a PCB.",
     "synonyms": [],
-    "details": "",
+    "details": "With the 'Chip-off' method, the chip(s) of interest is/are physically removed from a PCB. If it is a Non-Volatile memory chip, this chip can be subsequently read with a suitable memory chip reader, see:\\nT1029: Data read from desoldered managed NAND\\nT1030: Data read from raw NAND\\nComponents (for instance Non-Volatile memory chips) in modern electronics are soldered to the Printed Circuit Board (PCB) with a tin (Sn) alloy. The chip can be extracted by heating or by mechanical techniques. These are separate techniques, with their own particular weaknesses.",
     "subtechniques": [],
-    "examples": [],
-    "weaknesses": [],
-    "CASE_output_classes" : [],
-    "references": ["todo"]
+    "examples": ["Chip-off can be used when data stored in a non-volatile (NV) memory chip can not be accessed through any other (non destructive) methode.\\nChip-off can be used to repair a damaged device. All essential components (often: NV Memory, Processor and security element) can be transplanted to a donor device."],
+    "weaknesses": ["W1237"],
+    "CASE_output_classes" : ["observable:Memory chip"],
+    "references": ["https://www.forensischinstituut.nl/wetenschap-en-innovatie/publicaties/publicaties/2017/10/18/forensic-data-recovery-from-flash-memorytodo"]
 }

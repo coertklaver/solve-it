@@ -1,0 +1,12 @@
+{
+    "id": "W1237",
+    "name": "Loss of data due to device damage from Electrostatic discharge (ESD)",
+    "INCOMP": "x",
+    "INAC-EX": "",
+    "INAC-AS": "",
+    "INAC-ALT": "",
+    "INAC-COR": "",
+    "MISINT": "",
+    "mitigations": ["M1183"],
+    "references": ["Requirements for Handling Electrostatic-Discharge-Sensitive (ESDS) Devices https://www.jedec.org/standards-documents/docs/jesd-625"],
+}

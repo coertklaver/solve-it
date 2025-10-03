@@ -100,8 +100,16 @@ if __name__ == '__main__':
         techniques_sheet.write_string(i, 1, kb.get_technique(each_technique).get('name'))
         techniques_sheet.write_number(i, 2, len(kb.get_technique(each_technique).get('weaknesses', [])))
         total_mits = 0
+
         for each_weakness in kb.get_technique(each_technique).get('weaknesses', []):
-            total_mits += len(kb.get_weakness(each_weakness).get('mitigations', []))
+            weakness_obj = kb.get_weakness(each_weakness)
+            if weakness_obj is None:
+                logging.error(
+                    f'Weakness {each_weakness} not found for technique {each_technique} - Excel generation failed')
+                sys.exit(-1)
+            else:
+                total_mits += len(weakness_obj.get('mitigations', []))
+
         techniques_sheet.write_number(i, 3, total_mits)
         techniques_sheet.write_string(0, 2, "Weaknesses")
         techniques_sheet.write_string(0, 3, "Mitigations")

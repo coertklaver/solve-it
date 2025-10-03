@@ -1,6 +1,6 @@
 {
     "id": "M1183",
     "name": "Take ESD precautions",
-    "technique": "T1028",
+    "technique": ["T1002", "T1028", "T1029", "T1030", "T1135", "T1136"],
     "references" : ["Requirements for Handling Electrostatic-Discharge-Sensitive (ESDS) Devices https://www.jedec.org/standards-documents/docs/jesd-625"]
 }

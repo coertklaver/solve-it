@@ -8,5 +8,5 @@
     "INAC-COR": "",
     "MISINT": "",
     "mitigations": ["M1183"],
-    "references": ["Requirements for Handling Electrostatic-Discharge-Sensitive (ESDS) Devices https://www.jedec.org/standards-documents/docs/jesd-625"],
+    "references": ["Requirements for Handling Electrostatic-Discharge-Sensitive (ESDS) Devices https://www.jedec.org/standards-documents/docs/jesd-625"]
 }

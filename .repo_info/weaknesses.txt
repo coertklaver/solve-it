@@ -235,3 +235,4 @@ W1233	Failure to communicate imprecision in log entry timestamp
 W1234	Event time presented incorrectly due to incorrect timezone handling
 W1235	Failure to extract log entry type
 W1236	Incorrectly interpreting a log entry type based on a different version of the generating software or operating system
+W1238	Loss of data due to device damage from Electrostatic discharge (ESD)

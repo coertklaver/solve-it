@@ -1,6 +1,5 @@
 {
     "id": "M1186",
     "name": "Determine reading parameters from reference device and chip",
-    "technique": ["T1029","T1030"],
     "references" : []
 }

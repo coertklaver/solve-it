@@ -1,6 +1,5 @@
 {
     "id": "M1184",
     "name": "Precautions against moisture/reflow damage",
-    "technique": "T1028",
     "references" : ["Handling, Packing, Shipping and Use of Moisture, Reflow, and Process Sensitive Devices https://www.jedec.org/system/files/docs/J-STD-033D.PDF"]
 }

@@ -1,6 +1,5 @@
 {
     "id": "M1185",
     "name": "Obtain datasheet for memory chip",
-    "technique": ["T1029","T1030"],
     "references" : []
 }

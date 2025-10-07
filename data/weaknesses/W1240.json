@@ -1,0 +1,12 @@
+{
+    "id": "W1240",
+    "name": "Removal of memory chip from device can render data inaccessible due to keys required from another hardware component",
+    "INCOMP": "x",
+    "INAC-EX": "",
+    "INAC-AS": "",
+    "INAC-ALT": "",
+    "INAC-COR": "",
+    "MISINT": "",
+    "mitigations": ["M1201"],
+    "references": ["https://source.android.com/docs/security/features/encryption/full-disk"]
+}

@@ -1,0 +1,12 @@
+{
+    "id": "W1241",
+    "name": "Data unavailable from the memory chip due to mechanical damage",
+    "INCOMP": "x",
+    "INAC-EX": "",
+    "INAC-AS": "",
+    "INAC-ALT": "",
+    "INAC-COR": "",
+    "MISINT": "",
+    "mitigations": ["M1201"],
+    "references": []
+}

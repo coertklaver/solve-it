@@ -1,0 +1,12 @@
+{
+    "id": "W1237",
+    "name": "Loss of data due damage from moisture absorption and exposure to solder reflow temperatures",
+    "INCOMP": "x",
+    "INAC-EX": "",
+    "INAC-AS": "",
+    "INAC-ALT": "",
+    "INAC-COR": "",
+    "MISINT": "",
+    "mitigations": ["M1184"],
+    "references": ["Standard for handling, packing, shipping, and use of moisture/reflow sensitive surface-mount devices https://www.jedec.org/standards-documents/docs/j-std-033c"]
+}

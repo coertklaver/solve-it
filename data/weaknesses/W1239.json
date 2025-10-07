@@ -1,0 +1,12 @@
+{
+    "id": "W1239",
+    "name": "Loss of data due to excessive heat during thermal chip off",
+    "INCOMP": "x",
+    "INAC-EX": "",
+    "INAC-AS": "",
+    "INAC-ALT": "",
+    "INAC-COR": "",
+    "MISINT": "",
+    "mitigations": ["M1201"],
+    "references": ["https://dfrws.org/sites/default/files/session-files/2017_EU_paper_improving_the_reliability_of_chip-off_forensic_analysis_of_nand_flash_memory_devices.pdf"]
+}
